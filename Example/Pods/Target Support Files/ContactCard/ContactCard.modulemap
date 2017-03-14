@@ -1,0 +1,6 @@
+framework module ContactCard {
+  umbrella header "ContactCard-umbrella.h"
+
+  export *
+  module * { export * }
+}
