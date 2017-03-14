@@ -4,11 +4,16 @@
 [![License](https://img.shields.io/cocoapods/l/ContactCard.svg?style=flat)](http://cocoapods.org/pods/ContactCard)
 [![Platform](https://img.shields.io/cocoapods/p/ContactCard.svg?style=flat)](http://cocoapods.org/pods/ContactCard)
 
+Helper library for applications depending on the iOS Contacts framework.
+Converts from CNContact to jCard, or from jCard to CNMutableContact.
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
+
+The Contacts framework is available since iOS 9.
 
 ## Installation
 
