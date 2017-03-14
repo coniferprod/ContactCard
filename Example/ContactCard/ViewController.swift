@@ -40,7 +40,7 @@ class ViewController: UIViewController, CNContactPickerDelegate {
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
         ContactAuthorizer.authorizeContacts { succeeded in
             if succeeded {
-                let card = cardFromContact(contact: contact)
+                let card = cardFrom(contact: contact)
             }
         }
     }
