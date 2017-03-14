@@ -1,0 +1,34 @@
+{
+  "name": "ContactCard",
+  "version": "0.1.0",
+  "summary": "Contacts framework helper for jCard processing.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/coniferprod/ContactCard",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Jere Käpyaho": "jere@coniferproductions.com"
+  },
+  "source": {
+    "git": "https://github.com/coniferprod/ContactCard.git",
+    "tag": "0.1.0"
+  },
+  "social_media_url": "https://twitter.com/coniferprod",
+  "platforms": {
+    "ios": "9.0"
+  },
+  "ios": {
+    "frameworks": [
+      "Foundation",
+      "Contacts"
+    ]
+  },
+  "source_files": "ContactCard/Classes/**/*",
+  "dependencies": {
+    "SwiftyJSON": [
+
+    ]
+  }
+}
