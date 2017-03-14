@@ -658,7 +658,7 @@ public struct ContactCard {
     }
 }
 
-func contactFromCard(card: ContactCard) -> CNMutableContact {
+func contactFrom(card: ContactCard) -> CNMutableContact {
     let contact = CNMutableContact()
     
     // The version property is not needed here.
@@ -903,7 +903,7 @@ func contactFromCard(card: ContactCard) -> CNMutableContact {
     return contact
 }
 
-public func cardFromContact(contact: CNContact) -> ContactCard {
+public func cardFrom(contact: CNContact) -> ContactCard {
     // Show some statistics about the contact:
     print("Phone numbers: \(contact.phoneNumbers.count)")
     print("E-mail addresses: \(contact.emailAddresses.count)")
@@ -1219,7 +1219,7 @@ enum JCardError: Error {
 
 // Expects that the value string is exactly 7 (yearless dates)
 // or 10 (full dates) characters in length
-func parseBirthdayValue(value: String) -> NSDateComponents {
+func parseBirthday(value: String) -> NSDateComponents {
     let components = NSDateComponents()
     if value.hasPrefix("--") { // it's a yearless date
         components.year = NSDateComponentUndefined
@@ -1267,7 +1267,7 @@ func extractParameters(JSONParameters: JSON) -> [String: [String]] {
     return parameters
 }
 
-func cardFromJSON(jsonString: String) throws -> ContactCard {
+func cardFrom(JSONString: String) throws -> ContactCard {
     //print("cardFromJSON: jsonString = \(jsonString)")
     
     var card = ContactCard()
