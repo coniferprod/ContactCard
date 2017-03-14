@@ -7,13 +7,15 @@
 Helper library for applications depending on the iOS Contacts framework.
 Converts from CNContact to jCard, or from jCard to CNMutableContact.
 
+The jCard specification is [RFC 7095](https://tools.ietf.org/html/rfc7095).
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
 ## Requirements
 
-The Contacts framework is available since iOS 9.
+The [Contacts framework](https://developer.apple.com/reference/contacts) is available since iOS 9.
 
 ## Installation
 
