@@ -539,7 +539,7 @@ struct SocialProfileProperty: StructuredValueProperty {
 }
 
 
-struct ContactCard {
+public struct ContactCard {
     var version: VersionProperty
     var kind: KindProperty?
     var name: NameProperty?
@@ -903,7 +903,7 @@ func contactFromCard(card: ContactCard) -> CNMutableContact {
     return contact
 }
 
-func cardFromContact(contact: CNContact) -> ContactCard {
+public func cardFromContact(contact: CNContact) -> ContactCard {
     // Show some statistics about the contact:
     print("Phone numbers: \(contact.phoneNumbers.count)")
     print("E-mail addresses: \(contact.emailAddresses.count)")
