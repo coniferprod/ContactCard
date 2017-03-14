@@ -2,9 +2,19 @@
 
 import Quick
 import Nimble
-import ContactCard
+import XCTest
+@testable import ContactCard
 
-class TableOfContentsSpec: QuickSpec {
+class ContactCardTests: XCTestCase {
+    func testEmptyCard() {
+        let card = ContactCard()
+        
+        XCTAssertTrue(card.version.value == "4.0")
+    }
+    
+}
+
+class ContactCardSpec: QuickSpec {
     override func spec() {
         describe("these will fail") {
 
@@ -48,3 +58,5 @@ class TableOfContentsSpec: QuickSpec {
         }
     }
 }
+
+
