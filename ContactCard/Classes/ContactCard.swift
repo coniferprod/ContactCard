@@ -1272,7 +1272,7 @@ func cardFrom(JSONString: String) throws -> ContactCard {
     
     var card = ContactCard()
     
-    guard let dataFromString = jsonString.data(using: String.Encoding.utf8, allowLossyConversion: false)
+    guard let dataFromString = JSONString.data(using: String.Encoding.utf8, allowLossyConversion: false)
         else {
             return card
     }
