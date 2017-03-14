@@ -1,0 +1,10 @@
+framework module ContactCard {
+  umbrella header "ContactCard-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module ContactCard.Swift {
+    header "ContactCard-Swift.h"
+}
