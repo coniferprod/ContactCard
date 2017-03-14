@@ -2,7 +2,7 @@
   "name": "ContactCard",
   "version": "0.1.0",
   "summary": "Contacts framework helper for jCard processing.",
-  "description": "TODO: Add long description of the pod here.",
+  "description": "Helper library for applications depending on the iOS Contacts framework.\nConverts from CNContact to jCard, or from jCard to CNMutableContact.",
   "homepage": "https://github.com/coniferprod/ContactCard",
   "license": {
     "type": "MIT",
