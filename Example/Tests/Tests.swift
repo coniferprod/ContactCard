@@ -9,7 +9,7 @@ class ContactCardTests: XCTestCase {
     func testEmptyCard() {
         let card = ContactCard()
         
-        XCTAssertTrue(card.version.value == "4.0")
+        XCTAssertTrue(card.version.value as! String == "4.0")
     }
     
 }
