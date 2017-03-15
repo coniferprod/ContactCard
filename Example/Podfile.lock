@@ -1,5 +1,5 @@
 PODS:
-  - ContactCard (0.1.0):
+  - ContactCard (0.2.0):
     - SwiftyJSON
   - Nimble (5.1.1)
   - Quick (1.0.0)
@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ContactCard: b7aefe2c6d5d6db3dc5dc693e5a7b2070a7ca842
+  ContactCard: 184e635c3549a3bd04244b8613d222768e379cd4
   Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
   Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220

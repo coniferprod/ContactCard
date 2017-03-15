@@ -21,7 +21,9 @@ class ViewController: UIViewController, CNContactPickerDelegate {
 
         controller.delegate = self
         
-
+        ContactAuthorizer.authorizeContacts { succeeded in
+            self.pickContactButton.isEnabled = succeeded
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,7 +32,8 @@ class ViewController: UIViewController, CNContactPickerDelegate {
     }
 
     @IBAction func pickContact(_ sender: Any) {
-        navigationController?.present(controller, animated: true, completion: nil)
+        print("Button clicked")
+        present(controller, animated: true, completion: nil)
     }
     
     func contactPickerDidCancel(_ picker: CNContactPickerViewController) {
@@ -38,11 +41,9 @@ class ViewController: UIViewController, CNContactPickerDelegate {
     }
     
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
-        ContactAuthorizer.authorizeContacts { succeeded in
-            if succeeded {
-                let card = cardFrom(contact: contact)
-            }
-        }
+        print("User did select contact")
+        let card = cardFrom(contact: contact)
+        print(card.asJSON())
     }
 }
 
