@@ -404,7 +404,9 @@ struct TelProperty: ValueProperty {
         arr.append(name as AnyObject)
         arr.append(unravelParameters(parameters: self.parameters) as AnyObject)
         arr.append(valueType as AnyObject)
-        arr.append("tel:" + (value as! String))
+        
+        let telString: String = "tel:" + (value as! String)
+        arr.append(telString as AnyObject)
         return arr
     }
 }
@@ -476,7 +478,12 @@ struct AdrProperty: StructuredValueProperty {
          the country name
          */
         
-        arr.append(["", "", street, city, state, postalCode, country])
+        arr.append("" as AnyObject)
+        arr.append("" as AnyObject)
+        arr.append(street as AnyObject)
+        arr.append(city as AnyObject)
+        arr.append(postalCode as AnyObject)
+        arr.append(country as AnyObject)
         return arr
     }
 }
@@ -562,7 +569,7 @@ public struct ContactCard {
         vendorProperties = [VendorProperty]()
     }
     
-    func asJSON() -> String {
+    public func asJSON() -> String {
         var repr = [AnyObject]()
         repr.append("vcard" as AnyObject)
         
@@ -792,7 +799,7 @@ func contactFrom(card: ContactCard) -> CNMutableContact {
                 }
             }
             
-            contactEmailAddresses.append(CNLabeledValue(label: label, value: email as! String))
+            contactEmailAddresses.append(CNLabeledValue(label: label, value: email as! NSString))
         }
         
         contact.emailAddresses = contactEmailAddresses
@@ -823,7 +830,7 @@ func contactFrom(card: ContactCard) -> CNMutableContact {
             }
             
             let URL = URLProperty.value
-            contactURLs.append(CNLabeledValue(label: label, value: URL as! String))
+            contactURLs.append(CNLabeledValue(label: label, value: URL as! NSString))
         }
         
         contact.urlAddresses = contactURLs
@@ -1252,10 +1259,10 @@ func extractParameters(JSONParameters: JSON) -> [String: [String]] {
     var parameters = [String: [String]]()
     
     for (parameterName, parameterValue) in JSONParameters {
-        if parameterValue.type == .String {
+        if let parameterType = parameterValue.type as? String {
             parameters[parameterName] = [parameterValue.stringValue]
         }
-        else if parameterValue.type == .Array {
+        else if let parameterType = parameterValue.type as? Array<Any> {
             var values = [String]()
             for (_, value) in parameterValue {
                 values.append(value.stringValue)
@@ -1323,10 +1330,10 @@ func cardFrom(JSONString: String) throws -> ContactCard {
                     //print("\(index): \(component)")
                     var componentList = [String]()
                     
-                    if component.type == .String {
+                    if let componentType = component.type as? String {
                         componentList.append(component.string!)
                     }
-                    else if component.type == .Array {
+                    else if let componentType = component.type as? Array<Any> {
                         for c in component.array! {
                             componentList.append(c.string!)
                         }
@@ -1365,7 +1372,7 @@ func cardFrom(JSONString: String) throws -> ContactCard {
             // TODO: Check that the type is "date" and reject others for now
             let birthdayValue = property[PropertyIndex.Value.rawValue].stringValue
             print("bday value = \(birthdayValue)")
-            let birthdayComponents = parseBirthdayValue(value: birthdayValue)
+            let birthdayComponents = parseBirthday(value: birthdayValue)
             let birthdayProperty = BirthdayProperty(birthday: birthdayComponents, valueType: DatePropertyValueType.Date)
             card.bday = birthdayProperty
             
@@ -1422,10 +1429,10 @@ func cardFrom(JSONString: String) throws -> ContactCard {
             var orgProperty = OrgProperty()
             
             let orgValues = property[PropertyIndex.Value.rawValue]
-            if orgValues.type == .String {
+            if let orgType = orgValues.type as? String {
                 orgProperty.value = [orgValues.stringValue]
             }
-            else if orgValues.type == .Array {
+            else if let orgType = orgValues.type as? Array<Any> {
                 for (_, value) in orgValues {
                     orgProperty.value.append(value.stringValue)
                 }
