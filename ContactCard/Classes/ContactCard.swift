@@ -30,46 +30,46 @@ let cardVersion = "4.0"
 typealias PropertyParameters = [String: [String]]
 
 enum PropertyName: String {
-    case Version = "version"
-    case Kind = "kind"
-    case FormattedName = "fn"
-    case Name = "n"
-    case Nickname = "nickname"
-    case Title = "title"
-    case Organization = "org"
-    case Birthday = "bday"
-    case Telephone = "tel"
-    case Address = "adr"
-    case Email = "email"
+    case version = "version"
+    case kind = "kind"
+    case formattedName = "fn"
+    case name = "n"
+    case nickname = "nickname"
+    case title = "title"
+    case organization = "org"
+    case birthday = "bday"
+    case telephone = "tel"
+    case address = "adr"
+    case email = "email"
     case URL = "url"
-    case Social = "x-socialprofile"
+    case social = "x-socialprofile"
 }
 
 enum TypeParameterValue: String {
-    case Home = "home"
-    case Work = "work"
-    case Fax = "fax"
-    case Other = "other"
-    case Mobile = "cell"
-    case Voice = "voice"
-    case Pager = "pager"
+    case home = "home"
+    case work = "work"
+    case fax = "fax"
+    case other = "other"
+    case mobile = "cell"
+    case voice = "voice"
+    case pager = "pager"
     case iCloud = "x-icloud"
     case iPhone = "x-iphone"
-    case Twitter = "x-twitter"
-    case Facebook = "x-facebook"
-    case LinkedIn = "x-linkedin"
+    case twitter = "x-twitter"
+    case facebook = "x-facebook"
+    case linkedIn = "x-linkedin"
 }
 
 enum PropertyValueType: String {
-    case Text = "text"
+    case text = "text"
     case URI = "uri"
-    case Date = "date"
-    case Time = "time"
-    case DateTime = "date-time"
-    case DateAndOrTime = "date-and-or-time"
-    case Integer = "integer"
-    case Boolean = "boolean"
-    case Float = "float"
+    case date = "date"
+    case time = "time"
+    case dateTime = "date-time"
+    case dateAndOrTime = "date-and-or-time"
+    case integer = "integer"
+    case boolean = "boolean"
+    case float = "float"
 }
 
 // NOTE: To simplify processing internally, all parameter values are arrays.
@@ -122,9 +122,9 @@ struct VersionProperty: ValueProperty {
     var value: AnyObject
     
     init() {
-        name = PropertyName.Version.rawValue
+        name = PropertyName.version.rawValue
         parameters = [String: [String]]()
-        valueType = PropertyValueType.Text.rawValue
+        valueType = PropertyValueType.text.rawValue
         value = cardVersion as AnyObject
     }
     
@@ -145,9 +145,9 @@ struct KindProperty: ValueProperty {
     var value: AnyObject
     
     init() {
-        name = PropertyName.Kind.rawValue
+        name = PropertyName.kind.rawValue
         parameters = [String: [String]]()
-        valueType = PropertyValueType.Text.rawValue
+        valueType = PropertyValueType.text.rawValue
         self.value = "" as AnyObject
     }
     
@@ -172,9 +172,9 @@ struct FormattedNameProperty: ValueProperty {
     var value: AnyObject
     
     init() {
-        name = PropertyName.FormattedName.rawValue
+        name = PropertyName.formattedName.rawValue
         parameters = [String: [String]]()
-        valueType = PropertyValueType.Text.rawValue
+        valueType = PropertyValueType.text.rawValue
         self.value = "" as AnyObject
     }
     
@@ -195,9 +195,9 @@ struct NicknameProperty: ValueProperty {
     var value: AnyObject
     
     init(value: String) {
-        name = PropertyName.Nickname.rawValue
+        name = PropertyName.nickname.rawValue
         parameters = [String: [String]]()
-        valueType = PropertyValueType.Text.rawValue
+        valueType = PropertyValueType.text.rawValue
         self.value = value as AnyObject
     }
     
@@ -218,9 +218,9 @@ struct TitleProperty: ValueProperty {
     var value: AnyObject
     
     init() {
-        name = PropertyName.Title.rawValue
+        name = PropertyName.title.rawValue
         parameters = emptyParameters
-        valueType = PropertyValueType.Text.rawValue
+        valueType = PropertyValueType.text.rawValue
         self.value = "" as AnyObject
     }
     
@@ -258,18 +258,18 @@ struct VendorProperty: ValueProperty {
 }
 
 enum KindPropertyValue: String {
-    case Individual = "individual"
-    case Group = "group"
-    case Organization = "org"
-    case Location = "location"
+    case individual = "individual"
+    case group = "group"
+    case organization = "org"
+    case location = "location"
 }
 
 
 enum DatePropertyValueType: String {
-    case Date = "date"
-    case Time = "time"
-    case DateTime = "date-time"
-    case DateAndOrTime = "date-and-or-time"
+    case date = "date"
+    case time = "time"
+    case dateTime = "date-time"
+    case dateAndOrTime = "date-and-or-time"
 }
 
 struct BirthdayProperty: ValueProperty {
@@ -285,7 +285,7 @@ struct BirthdayProperty: ValueProperty {
     var day: Int
     
     init(birthday: NSDateComponents, valueType: DatePropertyValueType) {
-        name = PropertyName.Birthday.rawValue
+        name = PropertyName.birthday.rawValue
         parameters = emptyParameters
         self.valueType = valueType.rawValue
         
@@ -336,9 +336,9 @@ struct NameProperty: StructuredValueProperty {
     var honorificSuffixes: [String]
     
     init() {
-        name = PropertyName.Name.rawValue
+        name = PropertyName.name.rawValue
         parameters = emptyParameters
-        valueType = PropertyValueType.Text.rawValue
+        valueType = PropertyValueType.text.rawValue
         value = [String]()
         
         familyNames = [String]()
@@ -385,9 +385,9 @@ struct OrgProperty: StructuredValueProperty {
     var value: [String]
     
     init() {
-        name = PropertyName.Organization.rawValue
+        name = PropertyName.organization.rawValue
         parameters = emptyParameters
-        valueType = PropertyValueType.Text.rawValue
+        valueType = PropertyValueType.text.rawValue
         value = [String]()
     }
     
@@ -415,7 +415,7 @@ struct TelProperty: ValueProperty {
     var value: AnyObject
     
     init() {
-        name = PropertyName.Telephone.rawValue
+        name = PropertyName.telephone.rawValue
         parameters = emptyParameters
         valueType = PropertyValueType.URI.rawValue
         self.value = "" as AnyObject
@@ -440,9 +440,9 @@ struct EmailProperty: ValueProperty {
     var value: AnyObject
     
     init() {
-        name = PropertyName.Email.rawValue
+        name = PropertyName.email.rawValue
         parameters = emptyParameters
-        valueType = PropertyValueType.Text.rawValue
+        valueType = PropertyValueType.text.rawValue
         self.value = "" as AnyObject
     }
     
@@ -470,9 +470,9 @@ struct AdrProperty: StructuredValueProperty {
     var ISOCountryCode: String
     
     init() {
-        name = PropertyName.Address.rawValue
+        name = PropertyName.address.rawValue
         parameters = emptyParameters
-        valueType = PropertyValueType.Text.rawValue
+        valueType = PropertyValueType.text.rawValue
         value = [String]()
         
         street = ""
@@ -545,9 +545,9 @@ struct SocialProfileProperty: StructuredValueProperty {
     var username: String
     
     init() {
-        name = PropertyName.Social.rawValue
+        name = PropertyName.social.rawValue
         parameters = emptyParameters
-        valueType = PropertyValueType.Text.rawValue
+        valueType = PropertyValueType.text.rawValue
         value = [String]()
         
         service = ""
@@ -705,10 +705,10 @@ func contactFrom(card: ContactCard) -> CNMutableContact {
     // Handle the kind property, if any, and set the contact type accordingly
     if let kindProperty = card.kind {
         let value = kindProperty.value as! String
-        if value == KindPropertyValue.Organization.rawValue {
+        if value == KindPropertyValue.organization.rawValue {
             contact.contactType = CNContactType.organization
         }
-        else if value == KindPropertyValue.Individual.rawValue {
+        else if value == KindPropertyValue.individual.rawValue {
             contact.contactType = CNContactType.person
         }
     }
@@ -903,11 +903,11 @@ func contactFrom(card: ContactCard) -> CNMutableContact {
             var serviceLabel: String?
             let typeParameter = parameters["type"]!.first!
             switch typeParameter {
-            case TypeParameterValue.Twitter.rawValue:
+            case TypeParameterValue.twitter.rawValue:
                 serviceLabel = CNSocialProfileServiceTwitter
-            case TypeParameterValue.Facebook.rawValue:
+            case TypeParameterValue.facebook.rawValue:
                 serviceLabel = CNSocialProfileServiceFacebook
-            case TypeParameterValue.LinkedIn.rawValue:
+            case TypeParameterValue.linkedIn.rawValue:
                 serviceLabel = CNSocialProfileServiceLinkedIn
             default:
                 serviceLabel = nil
@@ -945,15 +945,15 @@ public func cardFrom(contact: CNContact) -> ContactCard {
     var kind = KindProperty()
     switch contact.contactType {
     case .organization:
-        kind.setKind(value: .Organization)
+        kind.setKind(value: .organization)
     case .person:
-        kind.setKind(value: .Individual)
+        kind.setKind(value: .individual)
     }
     
     card.kind = kind
     
     if let birthday = contact.birthday {
-        card.bday = BirthdayProperty(birthday: birthday as NSDateComponents, valueType: .Date)
+        card.bday = BirthdayProperty(birthday: birthday as NSDateComponents, valueType: .date)
     }
     
     var name = NameProperty()
@@ -998,34 +998,34 @@ public func cardFrom(contact: CNContact) -> ContactCard {
             
             let faxLabelSet: Set<String> = [CNLabelPhoneNumberHomeFax, CNLabelPhoneNumberWorkFax, CNLabelPhoneNumberOtherFax]
             if faxLabelSet.contains(label!) { // it is a fax machine
-                typeParameterValues.append(.Fax)
+                typeParameterValues.append(.fax)
                 if label == CNLabelPhoneNumberHomeFax {
-                    typeParameterValues.append(.Home)
+                    typeParameterValues.append(.home)
                 }
                 if label == CNLabelPhoneNumberWorkFax {
-                    typeParameterValues.append(.Work)
+                    typeParameterValues.append(.work)
                 }
                 if label == CNLabelPhoneNumberOtherFax {
-                    typeParameterValues.append(.Other)
+                    typeParameterValues.append(.other)
                 }
             }
             else if label == CNLabelPhoneNumberPager {
-                typeParameterValues.append(.Pager)
+                typeParameterValues.append(.pager)
             }
             else {  // must be a phone of some sort
                 if label == CNLabelHome {
-                    typeParameterValues.append(.Home)
+                    typeParameterValues.append(.home)
                 }
                 if label == CNLabelWork {
-                    typeParameterValues.append(.Work)
+                    typeParameterValues.append(.work)
                 }
                 if label == CNLabelOther {
-                    typeParameterValues.append(.Other)
+                    typeParameterValues.append(.other)
                 }
                 if label == CNLabelPhoneNumberMobile {
-                    typeParameterValues.append(.Mobile)
+                    typeParameterValues.append(.mobile)
                 }
-                typeParameterValues.append(.Voice)
+                typeParameterValues.append(.voice)
             }
             
             if label == CNLabelPhoneNumberiPhone {
@@ -1059,13 +1059,13 @@ public func cardFrom(contact: CNContact) -> ContactCard {
             let label = emailAddress.label
             var typeParameterValues = [TypeParameterValue]()
             if label == CNLabelHome {
-                typeParameterValues.append(.Home)
+                typeParameterValues.append(.home)
             }
             if label == CNLabelWork {
-                typeParameterValues.append(.Work)
+                typeParameterValues.append(.work)
             }
             if label == CNLabelOther {
-                typeParameterValues.append(.Other)
+                typeParameterValues.append(.other)
             }
             if label == CNLabelEmailiCloud {
                 typeParameterValues.append(.iCloud)
@@ -1096,13 +1096,13 @@ public func cardFrom(contact: CNContact) -> ContactCard {
             let label = postalAddress.label
             var typeParameterValues = [TypeParameterValue]()
             if label == CNLabelHome {
-                typeParameterValues.append(.Home)
+                typeParameterValues.append(.home)
             }
             if label == CNLabelWork {
-                typeParameterValues.append(.Work)
+                typeParameterValues.append(.work)
             }
             if label == CNLabelOther {
-                typeParameterValues.append(.Other)
+                typeParameterValues.append(.other)
             }
             
             var stringTypeParameters = PropertyParameters()
@@ -1132,13 +1132,13 @@ public func cardFrom(contact: CNContact) -> ContactCard {
             let label = urlAddress.label
             var typeParameterValues = [TypeParameterValue]()
             if label == CNLabelHome {
-                typeParameterValues.append(.Home)
+                typeParameterValues.append(.home)
             }
             if label == CNLabelWork {
-                typeParameterValues.append(.Work)
+                typeParameterValues.append(.work)
             }
             if label == CNLabelOther {
-                typeParameterValues.append(.Other)
+                typeParameterValues.append(.other)
             }
             
             var stringTypeParameters = PropertyParameters()
@@ -1328,16 +1328,16 @@ func cardFrom(JSONString: String) throws -> ContactCard {
         let propertyName = property[PropertyIndex.Name.rawValue].stringValue
         
         switch propertyName {
-        case PropertyName.Version.rawValue:
+        case PropertyName.version.rawValue:
             let versionProperty = VersionProperty()
             card.version = versionProperty
             
-        case PropertyName.FormattedName.rawValue:
+        case PropertyName.formattedName.rawValue:
             var fnProperty = FormattedNameProperty()
             fnProperty.value = property[PropertyIndex.Value.rawValue].stringValue as AnyObject
             card.formattedName = fnProperty
             
-        case PropertyName.Name.rawValue:
+        case PropertyName.name.rawValue:
             var nameProperty = NameProperty()
             // No need to set empty parameters
             let valueType = property[PropertyIndex.ValueType.rawValue]
@@ -1382,11 +1382,11 @@ func cardFrom(JSONString: String) throws -> ContactCard {
             card.name = nameProperty
             //print("nameProperty = \(nameProperty.asArray())")
             
-        case PropertyName.Nickname.rawValue:
+        case PropertyName.nickname.rawValue:
             let nicknameProperty = NicknameProperty(value: property[PropertyIndex.Value.rawValue].stringValue)
             card.nickname = nicknameProperty
             
-        case PropertyName.Birthday.rawValue:
+        case PropertyName.birthday.rawValue:
             // Because the iOS contacts only store the date (and not the time)
             // in the Birthday field, a typical client app generates jCards with the bday
             // property type set as "date" - with or without a year present.
@@ -1395,10 +1395,10 @@ func cardFrom(JSONString: String) throws -> ContactCard {
             let birthdayValue = property[PropertyIndex.Value.rawValue].stringValue
             print("bday value = \(birthdayValue)")
             let birthdayComponents = parseBirthday(value: birthdayValue)
-            let birthdayProperty = BirthdayProperty(birthday: birthdayComponents, valueType: DatePropertyValueType.Date)
+            let birthdayProperty = BirthdayProperty(birthday: birthdayComponents, valueType: DatePropertyValueType.date)
             card.bday = birthdayProperty
             
-        case PropertyName.Address.rawValue:  // postal address
+        case PropertyName.address.rawValue:  // postal address
             var addressProperty = AdrProperty()
             
             addressProperty.parameters = extractParameters(JSONParameters: property[PropertyIndex.Parameters.rawValue])
@@ -1420,7 +1420,7 @@ func cardFrom(JSONString: String) throws -> ContactCard {
             card.postalAddresses = addresses
             //print("addressProperty = \(addressProperty.asArray())")
             
-        case PropertyName.Telephone.rawValue:
+        case PropertyName.telephone.rawValue:
             var telProperty = TelProperty()
             telProperty.parameters = extractParameters(JSONParameters: property[PropertyIndex.Parameters.rawValue])
             let value = property[PropertyIndex.Value.rawValue].stringValue
@@ -1430,13 +1430,13 @@ func cardFrom(JSONString: String) throws -> ContactCard {
             
             phoneNumbers.append(telProperty)
             
-        case PropertyName.Email.rawValue:
+        case PropertyName.email.rawValue:
             var emailProperty = EmailProperty()
             emailProperty.parameters = extractParameters(JSONParameters: property[PropertyIndex.Parameters.rawValue])
             emailProperty.value = property[PropertyIndex.Value.rawValue].stringValue as AnyObject
             emails.append(emailProperty)
             
-        case PropertyName.Title.rawValue:
+        case PropertyName.title.rawValue:
             var titleProperty = TitleProperty()
             titleProperty.value = property[PropertyIndex.Value.rawValue].stringValue as AnyObject
             card.title = titleProperty
@@ -1447,7 +1447,7 @@ func cardFrom(JSONString: String) throws -> ContactCard {
             urlProperty.value = property[PropertyIndex.Value.rawValue].stringValue as AnyObject
             urls.append(urlProperty)
             
-        case PropertyName.Organization.rawValue:
+        case PropertyName.organization.rawValue:
             var orgProperty = OrgProperty()
             
             let orgValues = property[PropertyIndex.Value.rawValue]
@@ -1463,7 +1463,7 @@ func cardFrom(JSONString: String) throws -> ContactCard {
             card.org = orgProperty
             //print("orgProperty = \(orgProperty.asArray())")
             
-        case PropertyName.Social.rawValue:
+        case PropertyName.social.rawValue:
             var socialProfileProperty = SocialProfileProperty()
             socialProfileProperty.parameters = extractParameters(JSONParameters: property[PropertyIndex.Parameters.rawValue])
             
