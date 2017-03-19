@@ -60,7 +60,7 @@ enum TypeParameterValue: String {
     case linkedIn = "x-linkedin"
 }
 
-enum PropertyValueType: String {
+public enum PropertyValueType: String {
     case text = "text"
     case URI = "uri"
     case date = "date"
@@ -165,7 +165,7 @@ struct KindProperty: ValueProperty {
     }
 }
 
-struct FormattedNameProperty: ValueProperty {
+public struct FormattedNameProperty: ValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
@@ -188,7 +188,7 @@ struct FormattedNameProperty: ValueProperty {
     }
 }
 
-struct NicknameProperty: ValueProperty {
+public struct NicknameProperty: ValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
@@ -211,7 +211,7 @@ struct NicknameProperty: ValueProperty {
     }
 }
 
-struct TitleProperty: ValueProperty {
+public struct TitleProperty: ValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
@@ -234,7 +234,7 @@ struct TitleProperty: ValueProperty {
     }
 }
 
-struct VendorProperty: ValueProperty {
+public struct VendorProperty: ValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
@@ -272,7 +272,7 @@ enum DatePropertyValueType: String {
     case dateAndOrTime = "date-and-or-time"
 }
 
-struct BirthdayProperty: ValueProperty {
+public struct BirthdayProperty: ValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
@@ -322,7 +322,7 @@ struct BirthdayProperty: ValueProperty {
 }
 
 
-struct NameProperty: StructuredValueProperty {
+public struct NameProperty: StructuredValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
@@ -378,7 +378,7 @@ struct NameProperty: StructuredValueProperty {
 }
 
 
-struct OrgProperty: StructuredValueProperty {
+public struct OrgProperty: StructuredValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
@@ -408,7 +408,7 @@ struct OrgProperty: StructuredValueProperty {
 }
 
 
-struct TelProperty: ValueProperty {
+public struct TelProperty: ValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
@@ -433,7 +433,7 @@ struct TelProperty: ValueProperty {
     }
 }
 
-struct EmailProperty: ValueProperty {
+public struct EmailProperty: ValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
@@ -456,7 +456,7 @@ struct EmailProperty: ValueProperty {
     }
 }
 
-struct AdrProperty: StructuredValueProperty {
+public struct AdrProperty: StructuredValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
@@ -510,7 +510,7 @@ struct AdrProperty: StructuredValueProperty {
     }
 }
 
-struct URLProperty: ValueProperty {
+public struct URLProperty: ValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
@@ -533,7 +533,7 @@ struct URLProperty: ValueProperty {
     }
 }
 
-struct SocialProfileProperty: StructuredValueProperty {
+public struct SocialProfileProperty: StructuredValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
@@ -571,20 +571,20 @@ struct SocialProfileProperty: StructuredValueProperty {
 public struct ContactCard {
     var version: VersionProperty
     var kind: KindProperty?
-    var name: NameProperty?
-    var formattedName: FormattedNameProperty
-    var nickname: NicknameProperty?
-    var bday: BirthdayProperty?
-    var org: OrgProperty?
-    var title: TitleProperty?
-    var phoneNumbers: [TelProperty]?
-    var emailAddresses: [EmailProperty]?
-    var postalAddresses: [AdrProperty]?
-    var urlAddresses: [URLProperty]?
-    var socialProfiles: [SocialProfileProperty]?
-    var vendorProperties: [VendorProperty]
+    public var name: NameProperty?
+    public var formattedName: FormattedNameProperty
+    public var nickname: NicknameProperty?
+    public var bday: BirthdayProperty?
+    public var org: OrgProperty?
+    public var title: TitleProperty?
+    public var phoneNumbers: [TelProperty]?
+    public var var emailAddresses: [EmailProperty]?
+    public var postalAddresses: [AdrProperty]?
+    public var urlAddresses: [URLProperty]?
+    public var socialProfiles: [SocialProfileProperty]?
+    public var vendorProperties: [VendorProperty]
     
-    init() {
+    public init() {
         // Set the mandatory properties
         version = VersionProperty()
         formattedName = FormattedNameProperty()
@@ -687,7 +687,7 @@ public struct ContactCard {
     }
 }
 
-func contactFrom(card: ContactCard) -> CNMutableContact {
+public func contactFrom(card: ContactCard) -> CNMutableContact {
     let contact = CNMutableContact()
     
     // The version property is not needed here.
@@ -1296,7 +1296,7 @@ func extractParameters(JSONParameters: JSON) -> [String: [String]] {
     return parameters
 }
 
-func cardFrom(JSONString: String) throws -> ContactCard {
+public func cardFrom(JSONString: String) throws -> ContactCard {
     //print("cardFromJSON: jsonString = \(jsonString)")
     
     var card = ContactCard()
