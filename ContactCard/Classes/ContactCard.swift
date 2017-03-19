@@ -29,7 +29,7 @@ let cardVersion = "4.0"
 
 typealias PropertyParameters = [String: [String]]
 
-enum PropertyName: String {
+public enum PropertyName: String {
     case version = "version"
     case kind = "kind"
     case formattedName = "fn"
@@ -45,7 +45,7 @@ enum PropertyName: String {
     case social = "x-socialprofile"
 }
 
-enum TypeParameterValue: String {
+public enum TypeParameterValue: String {
     case home = "home"
     case work = "work"
     case fax = "fax"
@@ -115,7 +115,7 @@ func unravelParameters(parameters: [String: [String]]) -> Dictionary<String, Any
     return result
 }
 
-struct VersionProperty: ValueProperty {
+public struct VersionProperty: ValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
@@ -138,7 +138,7 @@ struct VersionProperty: ValueProperty {
     }
 }
 
-struct KindProperty: ValueProperty {
+public struct KindProperty: ValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
@@ -257,7 +257,7 @@ public struct VendorProperty: ValueProperty {
     }
 }
 
-enum KindPropertyValue: String {
+public enum KindPropertyValue: String {
     case individual = "individual"
     case group = "group"
     case organization = "org"
@@ -265,7 +265,7 @@ enum KindPropertyValue: String {
 }
 
 
-enum DatePropertyValueType: String {
+public enum DatePropertyValueType: String {
     case date = "date"
     case time = "time"
     case dateTime = "date-time"
@@ -578,7 +578,7 @@ public struct ContactCard {
     public var org: OrgProperty?
     public var title: TitleProperty?
     public var phoneNumbers: [TelProperty]?
-    public var var emailAddresses: [EmailProperty]?
+    public var emailAddresses: [EmailProperty]?
     public var postalAddresses: [AdrProperty]?
     public var urlAddresses: [URLProperty]?
     public var socialProfiles: [SocialProfileProperty]?
