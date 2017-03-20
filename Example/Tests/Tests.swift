@@ -23,6 +23,20 @@ class ContactCardTests: XCTestCase {
             XCTFail("Error parsing jCard")
         }
     }
+    
+    func testVendorProperty() {
+        let card = ContactCard()
+
+        var testProperty = VendorProperty(name: "x-test", valueType: PropertyValueType.text)
+        testProperty.value = "foo" as AnyObject
+        
+        if let cardTestProperty = card.vendorPropertyNamed(propertyName: "test") {
+            XCTAssertTrue(cardTestProperty.value as! String == "foo")
+        }
+        else {
+            XCTFail("Vendor property not available")
+        }
+    }
 }
 
 let examplejCard = "[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Marilou Lam\"],[\"n\",{},\"text\",[\"Lam\",\"Marilou\",\"\",\"\",\"Ms\"]],[\"adr\",{},\"text\",[\"\",\"\",\"3892 Duke St\",\"Oakville\",\"NJ\",\"79279\",\"U.S.A.\"]],[\"email\",{},\"text\",\"marilou.lam@example.com\"],[\"bday\",{},\"date-and-or-time\",\"1967-06-09T06:59:48-05:00\"]]]"
