@@ -676,7 +676,7 @@ public struct ContactCard {
     // If there is more than one vendor property with the same name,
     // this function takes the first and discards the rest.
     // Returns nil if there is not even one property with the given name.
-    func vendorPropertyNamed(propertyName: String) -> VendorProperty? {
+    public func vendorPropertyNamed(propertyName: String) -> VendorProperty? {
         for property in vendorProperties {
             if property.name == propertyName {
                 return property
@@ -1302,16 +1302,16 @@ public func cardFrom(JSONString: String) throws -> ContactCard {
     var card = ContactCard()
     
     guard let dataFromString = JSONString.data(using: String.Encoding.utf8, allowLossyConversion: false)
-        else {
-            return card
+    else {
+        return card
     }
     
     let j = JSON(data: dataFromString)
     let signature = j[0].string
     
     guard signature == vCardString
-        else {
-            throw JCardError.InvalidFormat
+    else {
+        throw JCardError.InvalidFormat
     }
     
     // Set up arrays of addresses, phone numbers etc.
