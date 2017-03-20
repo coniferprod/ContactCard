@@ -239,7 +239,7 @@ public struct VendorProperty: ValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
-    var value: AnyObject
+    public var value: AnyObject
     
     public init(name: String, valueType: PropertyValueType, value: AnyObject) {
         self.name = name
