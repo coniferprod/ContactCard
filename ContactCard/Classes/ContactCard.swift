@@ -240,7 +240,7 @@ public struct VendorProperty: ValueProperty {
     var valueType: String
     var value: AnyObject
     
-    init(name: String, valueType: PropertyValueType) {
+    public init(name: String, valueType: PropertyValueType) {
         self.name = name
         self.parameters = emptyParameters
         self.valueType = valueType.rawValue
