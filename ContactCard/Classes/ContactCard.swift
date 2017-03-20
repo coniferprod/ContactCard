@@ -241,11 +241,11 @@ public struct VendorProperty: ValueProperty {
     var valueType: String
     var value: AnyObject
     
-    public init(name: String, valueType: PropertyValueType) {
+    public init(name: String, valueType: PropertyValueType, value: AnyObject) {
         self.name = name
         self.parameters = emptyParameters
         self.valueType = valueType.rawValue
-        self.value = "" as AnyObject
+        self.value = value
     }
     
     func asArray() -> [AnyObject] {
