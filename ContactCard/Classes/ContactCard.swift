@@ -72,6 +72,7 @@ public enum PropertyValueType: String {
     case float = "float"
 }
 
+
 // NOTE: To simplify processing internally, all parameter values are arrays.
 // When they are serialized, arrays of one element will be
 // output as single values, and longer arrays as actual arrays.
@@ -410,7 +411,7 @@ public struct OrgProperty: StructuredValueProperty {
 
 public struct TelProperty: ValueProperty {
     var name: String
-    var parameters: [String: [String]]
+    public var parameters: [String: [String]]
     var valueType: String
     var value: AnyObject
     
@@ -435,7 +436,7 @@ public struct TelProperty: ValueProperty {
 
 public struct EmailProperty: ValueProperty {
     var name: String
-    var parameters: [String: [String]]
+    public var parameters: [String: [String]]
     var valueType: String
     var value: AnyObject
     
@@ -458,7 +459,7 @@ public struct EmailProperty: ValueProperty {
 
 public struct AdrProperty: StructuredValueProperty {
     var name: String
-    var parameters: [String: [String]]
+    public var parameters: [String: [String]]
     var valueType: String
     var value: [String]
     
@@ -512,7 +513,7 @@ public struct AdrProperty: StructuredValueProperty {
 
 public struct URLProperty: ValueProperty {
     var name: String
-    var parameters: [String: [String]]
+    public var parameters: [String: [String]]
     var valueType: String
     var value: AnyObject
     
@@ -535,7 +536,7 @@ public struct URLProperty: ValueProperty {
 
 public struct SocialProfileProperty: StructuredValueProperty {
     var name: String
-    var parameters: [String: [String]]
+    public var parameters: [String: [String]]
     var valueType: String
     var value: [String]
     
