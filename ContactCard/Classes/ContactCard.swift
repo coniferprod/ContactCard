@@ -1161,44 +1161,47 @@ public func cardFrom(contact: CNContact) -> ContactCard {
         for socialProfile in contact.socialProfiles {
             var social = SocialProfileProperty()
             
-            let label = socialProfile.label
+            // From the Contacts framework documentation:
+            // "Labels are not used for CNSocialProfile and CNInstantMessageAddress properties."
+            
+            //let label = socialProfile.label
             let value = socialProfile.value
+            
+            // These are the only relevant properties for CNSocialProfile:
             social.service = value.service
             social.urlString = value.urlString
             social.userIdentifier = value.userIdentifier
             social.username = value.username
             
-            print("Social profile: label = '\(label)', service = '\(value.service)', urlString = '\(value.urlString)', userIdentifier = '\(value.userIdentifier)', username = '\(value.username)'")
+            print("Social profile: service = '\(value.service)', urlString = '\(value.urlString)', userIdentifier = '\(value.userIdentifier)', username = '\(value.username)'")
             
-            // Not all the social profile values have a label, so fix them.
-            var actualLabel = label
-            if label == "" {
+            var serviceType = ""
                 switch value.service {
                 case CNSocialProfileServiceFacebook:
-                    actualLabel = "facebook"
+                    serviceType = "facebook"
                 case CNSocialProfileServiceFlickr:
-                    actualLabel = "flickr"
+                    serviceType = "flickr"
                 case CNSocialProfileServiceGameCenter:
-                    actualLabel = "gamecenter"
+                    serviceType = "gamecenter"
                 case CNSocialProfileServiceLinkedIn:
-                    actualLabel = "linkedin"
+                    serviceType = "linkedin"
                 case CNSocialProfileServiceMySpace:
-                    actualLabel = "myspace"
+                    serviceType = "myspace"
                 case CNSocialProfileServiceSinaWeibo:
-                    actualLabel = "sinaweibo"
+                    serviceType = "sinaweibo"
                 case CNSocialProfileServiceTencentWeibo:
-                    actualLabel = "tencentweibo"
+                    serviceType = "tencentweibo"
                 case CNSocialProfileServiceTwitter:
-                    actualLabel = "twitter"
+                    serviceType = "twitter"
                 case CNSocialProfileServiceYelp:
-                    actualLabel = "yelp"
+                    serviceType = "yelp"
                 default:
-                    actualLabel = ""
+                    serviceType = "unknownsocialprofile"
                 }
-            }
+            
             // The final jCard form of the social profile will be like this:
             // ["x-socialprofile", {"type": "x-twitter"}, "text", ["Twitter", "url", "", "username"]]
-            social.parameters = ["type": ["x-" + actualLabel!]]
+            social.parameters = ["type": ["x-" + value.service]]
             profiles.append(social)
         }
         
