@@ -25,12 +25,10 @@ class ContactCardTests: XCTestCase {
     }
     
     func testVendorProperty() {
-        let card = ContactCard()
-
-        var testProperty = VendorProperty(name: "x-test", valueType: PropertyValueType.text)
-        testProperty.value = "foo" as AnyObject
-        
-        if let cardTestProperty = card.vendorPropertyNamed(propertyName: "test") {
+        var card = ContactCard()
+        let testProperty = VendorProperty(name: "x-test", valueType: PropertyValueType.text, value: "foo" as AnyObject)
+        card.vendorProperties.append(testProperty)
+        if let cardTestProperty = card.vendorPropertyNamed(propertyName: "x-test") {
             XCTAssertTrue(cardTestProperty.value as! String == "foo")
         }
         else {
