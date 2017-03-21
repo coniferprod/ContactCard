@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ContactCard'
-  s.version          = '0.2.1'
+  s.version          = '0.2.2'
   s.summary          = 'Contacts framework helper for jCard processing.'
 
   s.description      = <<-DESC
