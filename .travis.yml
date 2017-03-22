@@ -4,6 +4,9 @@
 
 osx_image: xcode8.2
 language: swift
+xcode_workspace: Example/ContactCard.xcworkspace
+xcode_scheme: ContactCard-Example
+xcode_sdk: iphonesimulator10.2
 cache: cocoapods
 podfile: Example/Podfile
 
@@ -11,6 +14,6 @@ podfile: Example/Podfile
 # - gem install cocoapods # Since Travis is not always on latest version
 # - pod install --project-directory=Example
 
-script:
-- set -o pipefail && xcodebuild test -workspace Example/ContactCard.xcworkspace -scheme ContactCard-Example -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.2' -sdk iphonesimulator10.2 ONLY_ACTIVE_ARCH=NO | xcpretty
-- pod lib lint
+#script:
+#- set -o pipefail && xcodebuild test -workspace Example/ContactCard.xcworkspace -scheme ContactCard-Example -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.2' ONLY_ACTIVE_ARCH=NO | xcpretty
+#- pod lib lint
