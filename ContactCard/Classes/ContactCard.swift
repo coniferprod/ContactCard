@@ -703,11 +703,25 @@ public func contactFrom(card: ContactCard) -> CNMutableContact {
     // stored separately in CN(Mutable)Contact.
     
     if let nameProperty = card.name {
-        contact.givenName = nameProperty.givenNames[0]
-        contact.familyName = nameProperty.familyNames[0]
-        contact.middleName = nameProperty.additionalNames[0]
-        contact.namePrefix = nameProperty.honorificPrefixes[0]
-        contact.nameSuffix = nameProperty.honorificSuffixes[0]
+        if nameProperty.givenNames.count != 0 {
+            contact.givenName = nameProperty.givenNames[0]
+        }
+        
+        if nameProperty.familyNames.count != 0 {
+            contact.familyName = nameProperty.familyNames[0]
+        }
+        
+        if nameProperty.additionalNames.count != 0 {
+            contact.middleName = nameProperty.additionalNames[0]
+        }
+        
+        if nameProperty.honorificPrefixes.count != 0 {
+            contact.namePrefix = nameProperty.honorificPrefixes[0]
+        }
+        
+        if nameProperty.honorificSuffixes.count != 0 {
+            contact.nameSuffix = nameProperty.honorificSuffixes[0]
+        }
     }
     
     // Handle the kind property, if any, and set the contact type accordingly
