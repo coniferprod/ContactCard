@@ -322,6 +322,13 @@ public struct BirthdayProperty: ValueProperty {
     }
 }
 
+public enum NameComponentIndex: Int {
+    case family = 0
+    case given
+    case additional
+    case prefix
+    case suffix
+}
 
 public struct NameProperty: StructuredValueProperty {
     var name: String
@@ -1234,16 +1241,11 @@ public func cardFrom(contact: CNContact) -> ContactCard {
 
 let vCardString = "vcard"
 
-let nameIndex = 0
-let parametersIndex = 1
-let valueTypeIndex = 2
-let valueIndex = 3
-
 enum PropertyIndex: Int {
-    case Name
-    case Parameters
-    case ValueType
-    case Value
+    case name
+    case parameters
+    case valueType
+    case value
 }
 
 enum JCardError: Error {
@@ -1329,7 +1331,8 @@ public func cardFrom(JSONString: String) throws -> ContactCard {
     
     let properties = j[1]
     for (_, property) in properties {
-        let propertyName = property[PropertyIndex.Name.rawValue].stringValue
+        let propertyName = property[PropertyIndex.name.rawValue].stringValue
+        print(propertyName)
         
         switch propertyName {
         case PropertyName.version.rawValue:
@@ -1338,14 +1341,14 @@ public func cardFrom(JSONString: String) throws -> ContactCard {
             
         case PropertyName.formattedName.rawValue:
             var fnProperty = FormattedNameProperty()
-            fnProperty.value = property[PropertyIndex.Value.rawValue].stringValue as AnyObject
+            fnProperty.value = property[PropertyIndex.value.rawValue].stringValue as AnyObject
             card.formattedName = fnProperty
             
         case PropertyName.name.rawValue:
             var nameProperty = NameProperty()
             // No need to set empty parameters
-            let valueType = property[PropertyIndex.ValueType.rawValue]
-            let nameComponents = property[PropertyIndex.Value.rawValue]  // an array of components
+            let valueType = property[PropertyIndex.valueType.rawValue]
+            let nameComponents = property[PropertyIndex.value.rawValue]  // an array of components
             // There should be exactly five name components.
             // Any of the components could itself be an array.
             if nameComponents.count != 5 {
@@ -1353,19 +1356,25 @@ public func cardFrom(JSONString: String) throws -> ContactCard {
             }
             else {
                 for (index, component) in nameComponents {
-                    //print("\(index): \(component)")
+                    print("\(index): \(component)")
                     var componentList = [String]()
                     
-                    if let componentType = component.type as? String {
-                        componentList.append(component.string!)
-                    }
-                    else if let componentType = component.type as? Array<Any> {
+                    let type = component.type
+                    switch component.type {
+                    case .string:
+                        if component.string! != "" {
+                            componentList.append(component.string!)
+                        }
+                    case .array:
                         for c in component.array! {
                             componentList.append(c.string!)
                         }
+                    default:
+                        print("Component type = \(component.type), should never happen")
                     }
-                    
-                    //print("\(index), componentList = \(componentList)")
+
+                    let typeOfIndex = type(of: index)
+                    print("\(index) of type \(typeOfIndex), componentList = \(componentList)")
                     switch Int(index)! {
                     case 0:
                         nameProperty.familyNames = componentList
@@ -1387,7 +1396,7 @@ public func cardFrom(JSONString: String) throws -> ContactCard {
             //print("nameProperty = \(nameProperty.asArray())")
             
         case PropertyName.nickname.rawValue:
-            let nicknameProperty = NicknameProperty(value: property[PropertyIndex.Value.rawValue].stringValue)
+            let nicknameProperty = NicknameProperty(value: property[PropertyIndex.value.rawValue].stringValue)
             card.nickname = nicknameProperty
             
         case PropertyName.birthday.rawValue:
@@ -1396,7 +1405,7 @@ public func cardFrom(JSONString: String) throws -> ContactCard {
             // property type set as "date" - with or without a year present.
             // So for the time being, let's only parse the "date" type for bday.
             // TODO: Check that the type is "date" and reject others for now
-            let birthdayValue = property[PropertyIndex.Value.rawValue].stringValue
+            let birthdayValue = property[PropertyIndex.value.rawValue].stringValue
             print("bday value = \(birthdayValue)")
             let birthdayComponents = parseBirthday(value: birthdayValue)
             let birthdayProperty = BirthdayProperty(birthday: birthdayComponents, valueType: DatePropertyValueType.date)
@@ -1405,9 +1414,9 @@ public func cardFrom(JSONString: String) throws -> ContactCard {
         case PropertyName.address.rawValue:  // postal address
             var addressProperty = AdrProperty()
             
-            addressProperty.parameters = extractParameters(JSONParameters: property[PropertyIndex.Parameters.rawValue])
+            addressProperty.parameters = extractParameters(JSONParameters: property[PropertyIndex.parameters.rawValue])
             
-            let addressComponents = property[PropertyIndex.Value.rawValue]  // an array of components
+            let addressComponents = property[PropertyIndex.value.rawValue]  // an array of components
             if addressComponents.count != 7 {
                 print("ERROR: address property has \(addressComponents.count) components, not 7 - NOT OK")
             }
@@ -1426,8 +1435,8 @@ public func cardFrom(JSONString: String) throws -> ContactCard {
             
         case PropertyName.telephone.rawValue:
             var telProperty = TelProperty()
-            telProperty.parameters = extractParameters(JSONParameters: property[PropertyIndex.Parameters.rawValue])
-            let value = property[PropertyIndex.Value.rawValue].stringValue
+            telProperty.parameters = extractParameters(JSONParameters: property[PropertyIndex.parameters.rawValue])
+            let value = property[PropertyIndex.value.rawValue].stringValue
             
             // TODO: Do some tel: URL processing
             telProperty.value = value as AnyObject
@@ -1436,25 +1445,25 @@ public func cardFrom(JSONString: String) throws -> ContactCard {
             
         case PropertyName.email.rawValue:
             var emailProperty = EmailProperty()
-            emailProperty.parameters = extractParameters(JSONParameters: property[PropertyIndex.Parameters.rawValue])
-            emailProperty.value = property[PropertyIndex.Value.rawValue].stringValue as AnyObject
+            emailProperty.parameters = extractParameters(JSONParameters: property[PropertyIndex.parameters.rawValue])
+            emailProperty.value = property[PropertyIndex.value.rawValue].stringValue as AnyObject
             emails.append(emailProperty)
             
         case PropertyName.title.rawValue:
             var titleProperty = TitleProperty()
-            titleProperty.value = property[PropertyIndex.Value.rawValue].stringValue as AnyObject
+            titleProperty.value = property[PropertyIndex.value.rawValue].stringValue as AnyObject
             card.title = titleProperty
             
         case PropertyName.URL.rawValue:
             var urlProperty = URLProperty()
-            urlProperty.parameters = extractParameters(JSONParameters: property[PropertyIndex.Parameters.rawValue])
-            urlProperty.value = property[PropertyIndex.Value.rawValue].stringValue as AnyObject
+            urlProperty.parameters = extractParameters(JSONParameters: property[PropertyIndex.parameters.rawValue])
+            urlProperty.value = property[PropertyIndex.value.rawValue].stringValue as AnyObject
             urls.append(urlProperty)
             
         case PropertyName.organization.rawValue:
             var orgProperty = OrgProperty()
             
-            let orgValues = property[PropertyIndex.Value.rawValue]
+            let orgValues = property[PropertyIndex.value.rawValue]
             if let orgType = orgValues.type as? String {
                 orgProperty.value = [orgValues.stringValue]
             }
@@ -1469,9 +1478,9 @@ public func cardFrom(JSONString: String) throws -> ContactCard {
             
         case PropertyName.social.rawValue:
             var socialProfileProperty = SocialProfileProperty()
-            socialProfileProperty.parameters = extractParameters(JSONParameters: property[PropertyIndex.Parameters.rawValue])
+            socialProfileProperty.parameters = extractParameters(JSONParameters: property[PropertyIndex.parameters.rawValue])
             
-            let profileComponents = property[PropertyIndex.Value.rawValue]  // an array of components
+            let profileComponents = property[PropertyIndex.value.rawValue]  // an array of components
             if profileComponents.count != 4 {
                 print("ERROR: social profile property has \(profileComponents.count) components, not 4 - NOT OK")
             }
