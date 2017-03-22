@@ -29,7 +29,7 @@ let cardVersion = "4.0"
 
 typealias PropertyParameters = [String: [String]]
 
-enum PropertyName: String {
+public enum PropertyName: String {
     case version = "version"
     case kind = "kind"
     case formattedName = "fn"
@@ -45,7 +45,7 @@ enum PropertyName: String {
     case social = "x-socialprofile"
 }
 
-enum TypeParameterValue: String {
+public enum TypeParameterValue: String {
     case home = "home"
     case work = "work"
     case fax = "fax"
@@ -60,7 +60,7 @@ enum TypeParameterValue: String {
     case linkedIn = "x-linkedin"
 }
 
-enum PropertyValueType: String {
+public enum PropertyValueType: String {
     case text = "text"
     case URI = "uri"
     case date = "date"
@@ -71,6 +71,7 @@ enum PropertyValueType: String {
     case boolean = "boolean"
     case float = "float"
 }
+
 
 // NOTE: To simplify processing internally, all parameter values are arrays.
 // When they are serialized, arrays of one element will be
@@ -115,7 +116,7 @@ func unravelParameters(parameters: [String: [String]]) -> Dictionary<String, Any
     return result
 }
 
-struct VersionProperty: ValueProperty {
+public struct VersionProperty: ValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
@@ -138,7 +139,7 @@ struct VersionProperty: ValueProperty {
     }
 }
 
-struct KindProperty: ValueProperty {
+public struct KindProperty: ValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
@@ -165,7 +166,7 @@ struct KindProperty: ValueProperty {
     }
 }
 
-struct FormattedNameProperty: ValueProperty {
+public struct FormattedNameProperty: ValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
@@ -188,7 +189,7 @@ struct FormattedNameProperty: ValueProperty {
     }
 }
 
-struct NicknameProperty: ValueProperty {
+public struct NicknameProperty: ValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
@@ -211,7 +212,7 @@ struct NicknameProperty: ValueProperty {
     }
 }
 
-struct TitleProperty: ValueProperty {
+public struct TitleProperty: ValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
@@ -234,17 +235,17 @@ struct TitleProperty: ValueProperty {
     }
 }
 
-struct VendorProperty: ValueProperty {
+public struct VendorProperty: ValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
-    var value: AnyObject
+    public var value: AnyObject
     
-    init(name: String, valueType: PropertyValueType) {
+    public init(name: String, valueType: PropertyValueType, value: AnyObject) {
         self.name = name
         self.parameters = emptyParameters
         self.valueType = valueType.rawValue
-        self.value = "" as AnyObject
+        self.value = value
     }
     
     func asArray() -> [AnyObject] {
@@ -257,7 +258,7 @@ struct VendorProperty: ValueProperty {
     }
 }
 
-enum KindPropertyValue: String {
+public enum KindPropertyValue: String {
     case individual = "individual"
     case group = "group"
     case organization = "org"
@@ -265,14 +266,14 @@ enum KindPropertyValue: String {
 }
 
 
-enum DatePropertyValueType: String {
+public enum DatePropertyValueType: String {
     case date = "date"
     case time = "time"
     case dateTime = "date-time"
     case dateAndOrTime = "date-and-or-time"
 }
 
-struct BirthdayProperty: ValueProperty {
+public struct BirthdayProperty: ValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
@@ -322,7 +323,7 @@ struct BirthdayProperty: ValueProperty {
 }
 
 
-struct NameProperty: StructuredValueProperty {
+public struct NameProperty: StructuredValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
@@ -378,7 +379,7 @@ struct NameProperty: StructuredValueProperty {
 }
 
 
-struct OrgProperty: StructuredValueProperty {
+public struct OrgProperty: StructuredValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
@@ -408,9 +409,9 @@ struct OrgProperty: StructuredValueProperty {
 }
 
 
-struct TelProperty: ValueProperty {
+public struct TelProperty: ValueProperty {
     var name: String
-    var parameters: [String: [String]]
+    public var parameters: [String: [String]]
     var valueType: String
     var value: AnyObject
     
@@ -433,9 +434,9 @@ struct TelProperty: ValueProperty {
     }
 }
 
-struct EmailProperty: ValueProperty {
+public struct EmailProperty: ValueProperty {
     var name: String
-    var parameters: [String: [String]]
+    public var parameters: [String: [String]]
     var valueType: String
     var value: AnyObject
     
@@ -456,9 +457,9 @@ struct EmailProperty: ValueProperty {
     }
 }
 
-struct AdrProperty: StructuredValueProperty {
+public struct AdrProperty: StructuredValueProperty {
     var name: String
-    var parameters: [String: [String]]
+    public var parameters: [String: [String]]
     var valueType: String
     var value: [String]
     
@@ -510,9 +511,9 @@ struct AdrProperty: StructuredValueProperty {
     }
 }
 
-struct URLProperty: ValueProperty {
+public struct URLProperty: ValueProperty {
     var name: String
-    var parameters: [String: [String]]
+    public var parameters: [String: [String]]
     var valueType: String
     var value: AnyObject
     
@@ -533,9 +534,9 @@ struct URLProperty: ValueProperty {
     }
 }
 
-struct SocialProfileProperty: StructuredValueProperty {
+public struct SocialProfileProperty: StructuredValueProperty {
     var name: String
-    var parameters: [String: [String]]
+    public var parameters: [String: [String]]
     var valueType: String
     var value: [String]
     
@@ -571,20 +572,20 @@ struct SocialProfileProperty: StructuredValueProperty {
 public struct ContactCard {
     var version: VersionProperty
     var kind: KindProperty?
-    var name: NameProperty?
-    var formattedName: FormattedNameProperty
-    var nickname: NicknameProperty?
-    var bday: BirthdayProperty?
-    var org: OrgProperty?
-    var title: TitleProperty?
-    var phoneNumbers: [TelProperty]?
-    var emailAddresses: [EmailProperty]?
-    var postalAddresses: [AdrProperty]?
-    var urlAddresses: [URLProperty]?
-    var socialProfiles: [SocialProfileProperty]?
-    var vendorProperties: [VendorProperty]
+    public var name: NameProperty?
+    public var formattedName: FormattedNameProperty
+    public var nickname: NicknameProperty?
+    public var bday: BirthdayProperty?
+    public var org: OrgProperty?
+    public var title: TitleProperty?
+    public var phoneNumbers: [TelProperty]?
+    public var emailAddresses: [EmailProperty]?
+    public var postalAddresses: [AdrProperty]?
+    public var urlAddresses: [URLProperty]?
+    public var socialProfiles: [SocialProfileProperty]?
+    public var vendorProperties: [VendorProperty]
     
-    init() {
+    public init() {
         // Set the mandatory properties
         version = VersionProperty()
         formattedName = FormattedNameProperty()
@@ -676,7 +677,7 @@ public struct ContactCard {
     // If there is more than one vendor property with the same name,
     // this function takes the first and discards the rest.
     // Returns nil if there is not even one property with the given name.
-    func vendorPropertyNamed(propertyName: String) -> VendorProperty? {
+    public func vendorPropertyNamed(propertyName: String) -> VendorProperty? {
         for property in vendorProperties {
             if property.name == propertyName {
                 return property
@@ -687,7 +688,7 @@ public struct ContactCard {
     }
 }
 
-func contactFrom(card: ContactCard) -> CNMutableContact {
+public func contactFrom(card: ContactCard) -> CNMutableContact {
     let contact = CNMutableContact()
     
     // The version property is not needed here.
@@ -1160,44 +1161,47 @@ public func cardFrom(contact: CNContact) -> ContactCard {
         for socialProfile in contact.socialProfiles {
             var social = SocialProfileProperty()
             
-            let label = socialProfile.label
+            // From the Contacts framework documentation:
+            // "Labels are not used for CNSocialProfile and CNInstantMessageAddress properties."
+            
+            //let label = socialProfile.label
             let value = socialProfile.value
+            
+            // These are the only relevant properties for CNSocialProfile:
             social.service = value.service
             social.urlString = value.urlString
             social.userIdentifier = value.userIdentifier
             social.username = value.username
             
-            print("Social profile: label = '\(label)', service = '\(value.service)', urlString = '\(value.urlString)', userIdentifier = '\(value.userIdentifier)', username = '\(value.username)'")
+            print("Social profile: service = '\(value.service)', urlString = '\(value.urlString)', userIdentifier = '\(value.userIdentifier)', username = '\(value.username)'")
             
-            // Not all the social profile values have a label, so fix them.
-            var actualLabel = label
-            if label == "" {
+            var serviceType = ""
                 switch value.service {
                 case CNSocialProfileServiceFacebook:
-                    actualLabel = "facebook"
+                    serviceType = "facebook"
                 case CNSocialProfileServiceFlickr:
-                    actualLabel = "flickr"
+                    serviceType = "flickr"
                 case CNSocialProfileServiceGameCenter:
-                    actualLabel = "gamecenter"
+                    serviceType = "gamecenter"
                 case CNSocialProfileServiceLinkedIn:
-                    actualLabel = "linkedin"
+                    serviceType = "linkedin"
                 case CNSocialProfileServiceMySpace:
-                    actualLabel = "myspace"
+                    serviceType = "myspace"
                 case CNSocialProfileServiceSinaWeibo:
-                    actualLabel = "sinaweibo"
+                    serviceType = "sinaweibo"
                 case CNSocialProfileServiceTencentWeibo:
-                    actualLabel = "tencentweibo"
+                    serviceType = "tencentweibo"
                 case CNSocialProfileServiceTwitter:
-                    actualLabel = "twitter"
+                    serviceType = "twitter"
                 case CNSocialProfileServiceYelp:
-                    actualLabel = "yelp"
+                    serviceType = "yelp"
                 default:
-                    actualLabel = ""
+                    serviceType = "unknownsocialprofile"
                 }
-            }
+            
             // The final jCard form of the social profile will be like this:
             // ["x-socialprofile", {"type": "x-twitter"}, "text", ["Twitter", "url", "", "username"]]
-            social.parameters = ["type": ["x-" + actualLabel!]]
+            social.parameters = ["type": ["x-" + value.service]]
             profiles.append(social)
         }
         
@@ -1296,22 +1300,22 @@ func extractParameters(JSONParameters: JSON) -> [String: [String]] {
     return parameters
 }
 
-func cardFrom(JSONString: String) throws -> ContactCard {
+public func cardFrom(JSONString: String) throws -> ContactCard {
     //print("cardFromJSON: jsonString = \(jsonString)")
     
     var card = ContactCard()
     
     guard let dataFromString = JSONString.data(using: String.Encoding.utf8, allowLossyConversion: false)
-        else {
-            return card
+    else {
+        return card
     }
     
     let j = JSON(data: dataFromString)
     let signature = j[0].string
     
     guard signature == vCardString
-        else {
-            throw JCardError.InvalidFormat
+    else {
+        throw JCardError.InvalidFormat
     }
     
     // Set up arrays of addresses, phone numbers etc.
