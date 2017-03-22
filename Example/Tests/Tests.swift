@@ -24,6 +24,52 @@ class ContactCardTests: XCTestCase {
         }
     }
     
+    func testNameProperty_firstAndLastName() {
+        let jsonWithFirstAndLast = "[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Firstname Lastname\"],[\"n\",{},\"text\",[\"Lastname\",\"Firstname\",\"\",\"\",\"\"]]]]"
+
+        var card = ContactCard()
+        do {
+            card = try cardFrom(JSONString: jsonWithFirstAndLast)
+            
+            if let name = card.name {
+                XCTAssertTrue(name.familyNames.count == 1)
+                XCTAssertTrue(name.givenNames.count == 1)
+                XCTAssertTrue(name.additionalNames.count == 0)
+                XCTAssertTrue(name.honorificPrefixes.count == 0)
+                XCTAssertTrue(name.honorificSuffixes.count == 0)
+            }
+            else {
+                XCTFail("No name property found")
+            }
+        }
+        catch _ {
+            XCTFail("Error parsing jCard")
+        }
+    }
+
+    func testNameProperty_twoMiddleNames() {
+        let jsonWithFirstAndLast = "[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Firstname Lastname\"],[\"n\",{},\"text\",[\"Lastname\",\"Firstname\",[\"Middle1\",\"Middle2\"],\"\",\"\"]]]]"
+        
+        var card = ContactCard()
+        do {
+            card = try cardFrom(JSONString: jsonWithFirstAndLast)
+            
+            if let name = card.name {
+                XCTAssertTrue(name.familyNames.count == 1)
+                XCTAssertTrue(name.givenNames.count == 1)
+                XCTAssertTrue(name.additionalNames.count == 2)
+                XCTAssertTrue(name.honorificPrefixes.count == 0)
+                XCTAssertTrue(name.honorificSuffixes.count == 0)
+            }
+            else {
+                XCTFail("No name property found")
+            }
+        }
+        catch _ {
+            XCTFail("Error parsing jCard")
+        }
+    }
+
     func testVendorProperty() {
         var card = ContactCard()
         let testProperty = VendorProperty(name: "x-test", valueType: PropertyValueType.text, value: "foo" as AnyObject)
