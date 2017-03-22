@@ -15,9 +15,20 @@ class ContactCardTests: XCTestCase {
     func testCardFromJSON() {
         var card = ContactCard()
         do {
-            card = try cardFrom(JSONString: examplejCard)
+            card = try cardFrom(JSONString: sampleCards["alice"]!)
             
-            XCTAssertTrue(card.formattedName.value as! String == "Marilou Lam")
+            XCTAssertTrue(card.formattedName.value as! String == "Alice Gregory")
+
+            if let name = card.name {
+                XCTAssertTrue(name.familyNames.count == 1)
+                XCTAssertTrue(name.givenNames.count == 1)
+                XCTAssertTrue(name.additionalNames.count == 0)
+                XCTAssertTrue(name.honorificPrefixes.count == 0)
+                XCTAssertTrue(name.honorificSuffixes.count == 0)
+            }
+            else {
+                XCTFail("No name property found")
+            }
         }
         catch _ {
             XCTFail("Error parsing jCard")
@@ -84,6 +95,11 @@ class ContactCardTests: XCTestCase {
 }
 
 let examplejCard = "[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Marilou Lam\"],[\"n\",{},\"text\",[\"Lam\",\"Marilou\",\"\",\"\",\"Ms\"]],[\"adr\",{},\"text\",[\"\",\"\",\"3892 Duke St\",\"Oakville\",\"NJ\",\"79279\",\"U.S.A.\"]],[\"email\",{},\"text\",\"marilou.lam@example.com\"],[\"bday\",{},\"date-and-or-time\",\"1967-06-09T06:59:48-05:00\"]]]"
+
+let sampleCards : [String: String] = [
+"alice": "[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"n\",{},\"text\",[\"Gregory\",\"Alice\",\"\",\"\",\"\"]],[\"fn\",{},\"text\",\"Alice Gregory\"],[\"bday\",{},\"date\",\"--10-08\"],[\"adr\",{\"type\":\"home\"},\"text\",[\"\",\"\",\"1351 Edwards Rd\",\"Pompano Beach\",\"Maryland\",\"50980\",\"US\"]],[\"email\",{\"type\":\"home\"},\"text\",\"alice.gregory@example.com\"],[\"tel\",{\"type\":[\"home\",\"voice\"]},\"uri\",\"tel:(108)-346-6480\"],[\"tel\",{\"type\":[\"home\",\"cell\",\"voice\",\"text\"]},\"uri\",\"tel:(670)-328-1662\"],[\"x-introni2\",{},\"text\",[\"work\",\"meeting\"]]]]",
+                     
+"marilou": "[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Marilou Lam\"],[\"n\",{},\"text\",[\"Lam\",\"Marilou\",\"\",\"\",\"Ms\"]],[\"adr\",{},\"text\",[\"\",\"\",\"3892 Duke St\",\"Oakville\",\"NJ\",\"79279\",\"U.S.A.\"]],[\"email\",{},\"text\",\"marilou.lam@example.com\"],[\"bday\",{},\"date-and-or-time\",\"1967-06-09T06:59:48-05:00\"]]]" ]
 
 class ContactCardSpec: QuickSpec {
     override func spec() {
