@@ -42,10 +42,34 @@ public enum PropertyName: String {
     case address = "adr"
     case email = "email"
     case URL = "url"
-    case social = "x-socialprofile"
+    case social = "x-socialprofile"  // NOTE: vendor extension, not in vCard
 }
 
-// Properties not currently supported: PHOTO, ANNIVERSARY, GENDER
+/*
+ vCard 4.0 properties not currently supported:
+ PHOTO
+ ANNIVERSARY
+ GENDER
+ IMPP
+ LANG
+ TZ
+ GEO
+ ROLE
+ LOGO
+ MEMBER
+ RELATED
+ CATEGORIES
+ NOTE
+ PRODID
+ REV
+ SOUND
+ UID
+ CLIENTPIDMAP
+ KEY
+ FBURL
+ CALADRURI
+ CALURI
+ */
 
 public enum TypeParameterValue: String {
     case home = "home"
@@ -210,12 +234,11 @@ public struct NicknameProperty: StructuredValueProperty {
         arr.append(unravelParameters(parameters: self.parameters) as AnyObject)
         arr.append(valueType as AnyObject)
         
-        var nicknames = [String]()
-        if nicknames.count == 1 {
-            arr.append(nicknames[0] as AnyObject)
+        if value.count == 1 {
+            arr.append(value[0] as AnyObject)
         }
         else {
-            arr.append(nicknames as AnyObject)
+            arr.append(value as AnyObject)
         }
         return arr
     }
@@ -394,18 +417,17 @@ public struct NameProperty: StructuredValueProperty {
     }
 }
 
-
 public struct OrgProperty: StructuredValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
     var value: [String]
     
-    init() {
+    init(values: [String]) {
         name = PropertyName.organization.rawValue
         parameters = emptyParameters
         valueType = PropertyValueType.text.rawValue
-        value = [String]()
+        value = values
     }
     
     func asArray() -> [AnyObject] {
@@ -413,17 +435,17 @@ public struct OrgProperty: StructuredValueProperty {
         arr.append(name as AnyObject)
         arr.append(unravelParameters(parameters: self.parameters) as AnyObject)
         arr.append(valueType as AnyObject)
-        
-        if value.count > 1 {
-            arr.append(value as AnyObject)
+
+        var parts = [String]()
+        if value.count == 1 {
+            arr.append(value[0] as AnyObject)
         }
         else {
-            arr.append(value[0] as AnyObject)
+            arr.append(value as AnyObject)
         }
         return arr
     }
 }
-
 
 public struct TelProperty: ValueProperty {
     var name: String
@@ -997,14 +1019,12 @@ public func cardFrom(contact: CNContact) -> ContactCard {
     name.honorificSuffixes = [contact.nameSuffix]
     card.name = name
     
-    var org = OrgProperty()
     if contact.organizationName != "" {
         var values = [contact.organizationName]
         if contact.departmentName != "" {
             values.append(contact.departmentName)
         }
-        org.value = values
-        card.org = org
+        card.org = OrgProperty(values: values)
     }
     else {
         print("No contact.organizationName")
@@ -1489,7 +1509,8 @@ public func cardFrom(JSONString: String) throws -> ContactCard {
         case PropertyName.email.rawValue:
             var emailProperty = EmailProperty()
             emailProperty.parameters = extractParameters(JSONParameters: property[PropertyIndex.parameters.rawValue])
-            emailProperty.value = property[PropertyIndex.value.rawValue].stringValue as AnyObject
+            let value = property[PropertyIndex.value.rawValue].stringValue
+            emailProperty.value = value as AnyObject
             emails.append(emailProperty)
             
         case PropertyName.title.rawValue:
@@ -1504,20 +1525,17 @@ public func cardFrom(JSONString: String) throws -> ContactCard {
             urls.append(urlProperty)
             
         case PropertyName.organization.rawValue:
-            var orgProperty = OrgProperty()
-            
             let orgValues = property[PropertyIndex.value.rawValue]
-            if let orgType = orgValues.type as? String {
-                orgProperty.value = [orgValues.stringValue]
+            var values = [String]()
+            if orgValues.type == .string {
+                values.append(orgValues.string!)
             }
-            else if let orgType = orgValues.type as? Array<Any> {
-                for (_, value) in orgValues {
-                    orgProperty.value.append(value.stringValue)
+            else if orgValues.type == .array {
+                for o in orgValues.array! {
+                    values.append(o.string!)
                 }
             }
-            
-            card.org = orgProperty
-            //print("orgProperty = \(orgProperty.asArray())")
+            card.org = OrgProperty(values: values)
             
         case PropertyName.social.rawValue:
             var socialProfileProperty = SocialProfileProperty()
