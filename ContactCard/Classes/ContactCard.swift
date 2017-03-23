@@ -189,17 +189,17 @@ public struct FormattedNameProperty: ValueProperty {
     }
 }
 
-public struct NicknameProperty: ValueProperty {
+public struct NicknameProperty: StructuredValueProperty {
     var name: String
     var parameters: [String: [String]]
     var valueType: String
-    var value: AnyObject
+    var value: [String]
     
-    init(value: String) {
+    init(values: [String]) {
         name = PropertyName.nickname.rawValue
         parameters = [String: [String]]()
         valueType = PropertyValueType.text.rawValue
-        self.value = value as AnyObject
+        value = values
     }
     
     func asArray() -> [AnyObject] {
@@ -207,7 +207,14 @@ public struct NicknameProperty: ValueProperty {
         arr.append(name as AnyObject)
         arr.append(unravelParameters(parameters: self.parameters) as AnyObject)
         arr.append(valueType as AnyObject)
-        arr.append(value)
+        
+        var nicknames = [String]()
+        if nicknames.count == 1 {
+            arr.append(nicknames[0] as AnyObject)
+        }
+        else {
+            arr.append(nicknames as AnyObject)
+        }
         return arr
     }
 }
@@ -1239,7 +1246,7 @@ public func cardFrom(contact: CNContact) -> ContactCard {
     }
     
     if contact.nickname != "" {
-        let nickname = NicknameProperty(value: contact.nickname)
+        let nickname = NicknameProperty(values: [contact.nickname])
         card.nickname = nickname
     }
     else {
@@ -1410,8 +1417,17 @@ public func cardFrom(JSONString: String) throws -> ContactCard {
             //print("nameProperty = \(nameProperty.asArray())")
             
         case PropertyName.nickname.rawValue:
-            let nicknameProperty = NicknameProperty(value: property[PropertyIndex.value.rawValue].stringValue)
-            card.nickname = nicknameProperty
+            let nicknames = property[PropertyIndex.value.rawValue]
+            var values = [String]()
+            if nicknames.type == .string {
+                values.append(nicknames.string!)
+            }
+            else if nicknames.type == .array {
+                for n in nicknames.array! {
+                    values.append(n.string!)
+                }
+            }
+            card.nickname = NicknameProperty(values: values)
             
         case PropertyName.birthday.rawValue:
             // Because the iOS contacts only store the date (and not the time)
