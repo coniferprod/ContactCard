@@ -580,10 +580,10 @@ public struct SocialProfileProperty: StructuredValueProperty {
     var valueType: String
     var value: [String]
     
-    var service: String
-    var urlString: String
-    var userIdentifier: String
-    var username: String
+    public var service: String
+    public var urlString: String
+    public var userIdentifier: String
+    public var username: String
     
     init() {
         name = PropertyName.social.rawValue
@@ -608,10 +608,9 @@ public struct SocialProfileProperty: StructuredValueProperty {
     }
 }
 
-
 public struct ContactCard {
-    var version: VersionProperty
-    var kind: KindProperty?
+    public var version: VersionProperty
+    public var kind: KindProperty?
     public var name: NameProperty?
     public var formattedName: FormattedNameProperty
     public var nickname: NicknameProperty?
@@ -819,8 +818,6 @@ public func contactFrom(card: ContactCard) -> CNMutableContact {
         
         contact.phoneNumbers = contactPhoneNumbers
     }
-    
-    //http://useyourloaf.com/blog/swift-string-cheat-sheet/
     
     if let cardPostalAddresses = card.postalAddresses {
         //print("ContactCard postal addresses: \(cardPostalAddresses.count)")
@@ -1459,7 +1456,6 @@ public func cardFrom(JSONString: String) throws -> ContactCard {
             // in the Birthday field, a typical client app generates jCards with the bday
             // property type set as "date" - with or without a year present.
             // So for the time being, let's only parse the "date" type for bday.
-            // TODO: Check that the type is "date" and reject others for now
             let birthdayValue = property[PropertyIndex.value.rawValue].stringValue
             let birthdayValueType = property[PropertyIndex.valueType.rawValue].stringValue
             print("bday value = \(birthdayValue), value type = \(birthdayValueType)")
@@ -1500,10 +1496,7 @@ public func cardFrom(JSONString: String) throws -> ContactCard {
             var telProperty = TelProperty()
             telProperty.parameters = extractParameters(JSONParameters: property[PropertyIndex.parameters.rawValue])
             let value = property[PropertyIndex.value.rawValue].stringValue
-            
-            // TODO: Do some tel: URL processing
             telProperty.value = value as AnyObject
-            
             phoneNumbers.append(telProperty)
             
         case PropertyName.email.rawValue:
@@ -1542,17 +1535,20 @@ public func cardFrom(JSONString: String) throws -> ContactCard {
             socialProfileProperty.parameters = extractParameters(JSONParameters: property[PropertyIndex.parameters.rawValue])
             
             let profileComponents = property[PropertyIndex.value.rawValue]  // an array of components
-            if profileComponents.count != 4 {
-                print("ERROR: social profile property has \(profileComponents.count) components, not 4 - NOT OK")
-            }
+            guard profileComponents.count == 4
             else {
-                socialProfileProperty.service = profileComponents[0].stringValue
-                socialProfileProperty.urlString = profileComponents[1].stringValue
-                socialProfileProperty.userIdentifier = profileComponents[2].stringValue
-                socialProfileProperty.username = profileComponents[3].stringValue
+                print("ERROR: the x-social-profile property should have 4 components, not \(profileComponents.count)")
+                throw JCardError.InvalidFormat
             }
-            
+            socialProfileProperty.service = profileComponents[0].stringValue
+            socialProfileProperty.urlString = profileComponents[1].stringValue
+            socialProfileProperty.userIdentifier = profileComponents[2].stringValue
+            socialProfileProperty.username = profileComponents[3].stringValue
+
+            socialProfileProperty.value = [profileComponents[0].stringValue, profileComponents[1].stringValue, profileComponents[2].stringValue, profileComponents[3].stringValue]
+
             socialProfiles.append(socialProfileProperty)
+            print(socialProfileProperty)
             
         default:
             break
