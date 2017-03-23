@@ -1,5 +1,3 @@
-// https://github.com/Quick/Quick
-
 import Quick
 import Nimble
 import XCTest
@@ -485,6 +483,40 @@ class ContactCardTests: XCTestCase {
         }
     }
 
+    func testSocialProfileProperty() {
+        // The final jCard form of the social profile will be like this:
+        // ["x-socialprofile", {"type": "x-twitter"}, "text", ["Twitter", "url", "", "username"]]
+
+        let jCard = "[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Marilou Lam\"],[\"n\",{},\"text\",[\"Lam\",\"Marilou\",\"\",\"\",\"Ms\"]],[\"adr\",{},\"text\",[\"\",\"\",\"3892 Duke St\",\"Oakville\",\"NJ\",\"79279\",\"U.S.A.\"]],[\"email\",{},\"text\",\"marilou.lam@example.com\"],[\"x-socialprofile\",{\"type\":\"x-twitter\"},\"text\",[\"Twitter\",\"https://twitter.com/twitter\",\"\",\"twitter\"]]]]"
+        var card: ContactCard?
+        do {
+            card = try cardFrom(JSONString: jCard)
+            
+            if let profiles = card?.socialProfiles {
+                if profiles.count != 1 {
+                    XCTFail("Expected one x-socialprofile property")
+                }
+                else {
+                    let profile = profiles[0]
+                    XCTAssertTrue(profile.valueType == PropertyValueType.text.rawValue)
+                    
+                    // TODO: Test the parameters
+                    let typeParam = profile.parameters["type"]
+                    
+                    XCTAssertTrue(profile.service == "Twitter")
+                    XCTAssertTrue(profile.urlString == "https://twitter.com/twitter")
+                    XCTAssertTrue(profile.userIdentifier == "")
+                    XCTAssertTrue(profile.username == "twitter")
+                }
+            }
+            else {
+                XCTFail("No x-socialprofile properties found")
+            }
+        }
+        catch _ {
+            XCTFail("Error parsing jCard")
+        }
+    }
     
     func testVendorProperty() {
         var card = ContactCard()
