@@ -288,9 +288,9 @@ public struct BirthdayProperty: ValueProperty {
     
     // A birthday always has month and day, but year is optional.
     // We don't care about the time, only the date.
-    var year: Int?
-    var month: Int
-    var day: Int
+    public var year: Int?
+    public var month: Int
+    public var day: Int
     
     init(birthday: NSDateComponents, valueType: DatePropertyValueType) {
         name = PropertyName.birthday.rawValue
@@ -1271,6 +1271,7 @@ enum PropertyIndex: Int {
 
 enum JCardError: Error {
     case InvalidFormat
+    case InvalidValueType
 }
 
 // Expects that the value string is exactly 7 (yearless dates)
@@ -1436,7 +1437,15 @@ public func cardFrom(JSONString: String) throws -> ContactCard {
             // So for the time being, let's only parse the "date" type for bday.
             // TODO: Check that the type is "date" and reject others for now
             let birthdayValue = property[PropertyIndex.value.rawValue].stringValue
-            print("bday value = \(birthdayValue)")
+            let birthdayValueType = property[PropertyIndex.valueType.rawValue].stringValue
+            print("bday value = \(birthdayValue), value type = \(birthdayValueType)")
+            
+            guard birthdayValueType == PropertyValueType.date.rawValue
+            else {
+                print("ERROR: only birthdays with the value type of 'date' are accepted")
+                throw JCardError.InvalidValueType
+            }
+
             let birthdayComponents = parseBirthday(value: birthdayValue)
             let birthdayProperty = BirthdayProperty(birthday: birthdayComponents, valueType: DatePropertyValueType.date)
             card.bday = birthdayProperty
