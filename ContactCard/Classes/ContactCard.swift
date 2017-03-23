@@ -45,6 +45,8 @@ public enum PropertyName: String {
     case social = "x-socialprofile"
 }
 
+// Properties not currently supported: PHOTO, ANNIVERSARY, GENDER
+
 public enum TypeParameterValue: String {
     case home = "home"
     case work = "work"
@@ -477,12 +479,12 @@ public struct AdrProperty: StructuredValueProperty {
     var valueType: String
     var value: [String]
     
-    var street: String
-    var city: String
-    var state: String
-    var postalCode: String
-    var country: String
-    var ISOCountryCode: String
+    public var street: String
+    public var city: String
+    public var state: String
+    public var postalCode: String
+    public var country: String
+    public var ISOCountryCode: String
     
     init() {
         name = PropertyName.address.rawValue
@@ -515,8 +517,10 @@ public struct AdrProperty: StructuredValueProperty {
          the country name
          */
         
-        arr.append("" as AnyObject)
-        arr.append("" as AnyObject)
+        // NOTE: RFC 6350 says post office box and extended address
+        // SHOULD be empty
+        arr.append("" as AnyObject)  // post office box
+        arr.append("" as AnyObject)  // extended address
         arr.append(street as AnyObject)
         arr.append(city as AnyObject)
         arr.append(postalCode as AnyObject)
