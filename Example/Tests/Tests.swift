@@ -189,6 +189,40 @@ class ContactCardTests: XCTestCase {
             XCTFail("Error parsing jCard")
         }
     }
+
+    // Currently only the date type is supported
+    func testBirthdayProperty_date() {
+        var card: ContactCard?
+        do {
+            card = try cardFrom(JSONString: sampleCards["alice"]!)
+            
+            if let property = card?.bday {
+                XCTAssertTrue(property.valueType == PropertyValueType.date.rawValue)
+                XCTAssertNil(property.year)
+                XCTAssert(property.month == 10)
+                XCTAssert(property.day == 8)
+            }
+            else {
+                XCTFail("No bday property found")
+            }
+        }
+        catch _ {
+            XCTFail("Error parsing jCard")
+        }
+    }
+    
+    func testBirthdayProperty_notDate() {
+        do {
+            _ = try cardFrom(JSONString: sampleCards["marilou"]!)
+            XCTFail()
+        }
+        catch JCardError.InvalidValueType {
+            print("Correctly throwing JCardError.InvalidValueType because bday value type is not 'date'")
+        }
+        catch {
+            XCTFail("Error parsing jCard")
+        }
+    }
     
     func testVendorProperty() {
         var card = ContactCard()
