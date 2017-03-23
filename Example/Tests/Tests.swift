@@ -332,7 +332,7 @@ class ContactCardTests: XCTestCase {
  specified in [RFC3966].
  */
     func testTelProperty() {
-        let jCard = "[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"n\",{},\"text\",[\"Gregory\",\"Alice\",\"\",\"\",\"\"]],[\"fn\",{},\"text\",\"Alice Gregory\"],[\"bday\",{},\"date\",\"--10-08\"],[\"adr\",{\"type\":\"home\"},\"text\",[\"\",\"\",\"1351 Edwards Rd\",\"Pompano Beach\",\"Maryland\",\"50980\",\"US\"]],[\"email\",{\"type\":\"home\"},\"text\",\"alice.gregory@example.com\"],[\"tel\",{\"type\":[\"home\",\"cell\",\"voice\",\"text\"]},\"uri\",\"tel:(670)-328-1662\"],[\"x-introni2\",{},\"text\",[\"work\",\"meeting\"]]]]"
+        let jCard = "[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"n\",{},\"text\",[\"Gregory\",\"Alice\",\"\",\"\",\"\"]],[\"fn\",{},\"text\",\"Alice Gregory\"],[\"bday\",{},\"date\",\"--10-08\"],[\"adr\",{\"type\":\"home\"},\"text\",[\"\",\"\",\"1351 Edwards Rd\",\"Pompano Beach\",\"Maryland\",\"50980\",\"US\"]],[\"email\",{\"type\":\"home\"},\"text\",\"alice.gregory@example.com\"],[\"tel\",{\"type\":[\"home\",\"cell\",\"voice\",\"text\"]},\"uri\",\"tel:(670)-328-1662\"]]]"
 
         var card: ContactCard?
         do {
@@ -363,6 +363,128 @@ class ContactCardTests: XCTestCase {
         }
     }
     
+    func testEmailProperty() {
+        var card: ContactCard?
+        do {
+            card = try cardFrom(JSONString: sampleCards["alice"]!)
+            
+            if let emails = card?.emailAddresses {
+                // There should be one e-mail address for Alice
+                if emails.count != 1 {
+                    XCTFail("Expected one e-mail address")
+                }
+                else {
+                    let email = emails[0]
+                    let value = email.value as! String
+                    XCTAssertTrue(value == "alice.gregory@example.com")
+                }
+            }
+            else {
+                XCTFail("No EMAIL properties found")
+            }
+        }
+        catch _ {
+            XCTFail("Error parsing jCard")
+        }
+    }
+    
+    func testUrlProperty() {
+        let jCard = "[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Marilou Lam\"],[\"n\",{},\"text\",[\"Lam\",\"Marilou\",\"\",\"\",\"Ms\"]],[\"adr\",{},\"text\",[\"\",\"\",\"3892 Duke St\",\"Oakville\",\"NJ\",\"79279\",\"U.S.A.\"]],[\"email\",{},\"text\",\"marilou.lam@example.com\"],[\"url\",{\"type\": \"home\"},\"uri\",\"http://www.example.com\"]]]"
+        
+        var card: ContactCard?
+        do {
+            card = try cardFrom(JSONString: jCard)
+            
+            if let urls = card?.urlAddresses {
+                // There should be one URL of type 'home'
+                if urls.count != 1 {
+                    XCTFail("Expected one URL property")
+                }
+                else {
+                    let url = urls[0]
+                    XCTAssertTrue(url.valueType == PropertyValueType.URI.rawValue)
+                    
+                    // TODO: Test the parameters
+                    let typeParameters = url.parameters["type"]
+                    
+                    let value = url.value as! String
+                    XCTAssertTrue(value == "http://www.example.com")
+                }
+            }
+            else {
+                XCTFail("No URL properties found")
+            }
+        }
+        catch _ {
+            XCTFail("Error parsing jCard")
+        }
+    }
+    
+    func testTitleProperty() {
+        let jCard = "[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Marilou Lam\"],[\"n\",{},\"text\",[\"Lam\",\"Marilou\",\"\",\"\",\"Ms\"]],[\"title\",{},\"text\",\"Organist\"],[\"adr\",{},\"text\",[\"\",\"\",\"3892 Duke St\",\"Oakville\",\"NJ\",\"79279\",\"U.S.A.\"]],[\"email\",{},\"text\",\"marilou.lam@example.com\"],[\"url\",{\"type\":\"home\"},\"uri\",\"http://www.example.com\"]]]"
+        
+        var card: ContactCard?
+        do {
+            card = try cardFrom(JSONString: jCard)
+            
+            if let title = card?.title {
+                XCTAssertTrue(title.valueType == PropertyValueType.text.rawValue)
+                    
+                // TODO: Test the parameters
+                let typeParameters = title.parameters["type"]
+                    
+                let value = title.value as! String
+                XCTAssertTrue(value == "Organist")
+            }
+            else {
+                XCTFail("No TITLE properties found")
+            }
+        }
+        catch _ {
+            XCTFail("Error parsing jCard")
+        }
+    }
+    
+    func testOrgProperty_one() {
+        let jCard = "[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Marilou Lam\"],[\"n\",{},\"text\",[\"Lam\",\"Marilou\",\"\",\"\",\"Ms\"]],[\"title\",{},\"text\",\"Organist\"],[\"org\",{},\"text\",\"Acme, Inc.\"],[\"adr\",{},\"text\",[\"\",\"\",\"3892 Duke St\",\"Oakville\",\"NJ\",\"79279\",\"U.S.A.\"]],[\"email\",{},\"text\",\"marilou.lam@example.com\"],[\"url\",{\"type\":\"home\"},\"uri\",\"http://www.example.com\"]]]"
+
+        var card: ContactCard?
+        do {
+            card = try cardFrom(JSONString: jCard)
+            
+            if let property = card?.org {
+                XCTAssertTrue(property.valueType == PropertyValueType.text.rawValue)
+                XCTAssertTrue(property.value.count == 1 && property.value[0] == "Acme, Inc.")
+            }
+            else {
+                XCTFail("No ORG property found")
+            }
+        }
+        catch _ {
+            XCTFail("Error parsing jCard")
+        }
+    }
+    
+    func testOrgProperty_many() {
+        let jCard = "[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Marilou Lam\"],[\"n\",{},\"text\",[\"Lam\",\"Marilou\",\"\",\"\",\"Ms\"]],[\"title\",{},\"text\",\"Organist\"],[\"org\",{},\"text\",[\"Acme, Inc.\",\"Music Dept.\"]],[\"adr\",{},\"text\",[\"\",\"\",\"3892 Duke St\",\"Oakville\",\"NJ\",\"79279\",\"U.S.A.\"]],[\"email\",{},\"text\",\"marilou.lam@example.com\"],[\"url\",{\"type\":\"home\"},\"uri\",\"http://www.example.com\"]]]"
+
+        var card: ContactCard?
+        do {
+            card = try cardFrom(JSONString: jCard)
+            
+            if let property = card?.org {
+                XCTAssertTrue(property.valueType == PropertyValueType.text.rawValue)
+                XCTAssertTrue(property.value.count == 2 && property.value[0] == "Acme, Inc." && property.value[1] == "Music Dept.")
+            }
+            else {
+                XCTFail("No ORG property found")
+            }
+        }
+        catch _ {
+            XCTFail("Error parsing jCard")
+        }
+    }
+
     
     func testVendorProperty() {
         var card = ContactCard()
