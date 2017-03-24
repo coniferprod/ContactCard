@@ -1326,20 +1326,30 @@ func parseBirthday(value: String) -> NSDateComponents {
     return components
 }
 
-func extractParameters(JSONParameters: JSON) -> [String: [String]] {
-    var parameters = [String: [String]]()
+//
+// Extract the parameters of a property into a dictionary
+// where key is parameter name and value is array of parameter values.
+//
+func extractParameters(JSONParameters: JSON) -> PropertyParameters {
+    var parameters = PropertyParameters()
     
-    for (parameterName, parameterValue) in JSONParameters {
-        if let parameterType = parameterValue.type as? String {
-            parameters[parameterName] = [parameterValue.stringValue]
-        }
-        else if let parameterType = parameterValue.type as? Array<Any> {
-            var values = [String]()
-            for (_, value) in parameterValue {
-                values.append(value.stringValue)
+    for (name, value) in JSONParameters {
+        var values = [String]()
+        
+        switch value.type {
+        case .string:
+            if value.string! != "" {
+                values.append(value.string!)
             }
-            parameters[parameterName] = values
+        case .array:
+            for v in value.array! {
+                values.append(v.string!)
+            }
+        default:
+            print("Parameter value type = \(value.type), should never happen")
         }
+        
+        parameters[name] = values
     }
     
     return parameters
