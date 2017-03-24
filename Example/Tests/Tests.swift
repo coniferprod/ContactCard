@@ -329,7 +329,7 @@ class ContactCardTests: XCTestCase {
  URI value.  It is expected that the URI scheme will be "tel", as
  specified in [RFC3966].
  */
-    func testTelProperty() {
+    func testTelProperty_manyParameterValues() {
         let jCard = "[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"n\",{},\"text\",[\"Gregory\",\"Alice\",\"\",\"\",\"\"]],[\"fn\",{},\"text\",\"Alice Gregory\"],[\"bday\",{},\"date\",\"--10-08\"],[\"adr\",{\"type\":\"home\"},\"text\",[\"\",\"\",\"1351 Edwards Rd\",\"Pompano Beach\",\"Maryland\",\"50980\",\"US\"]],[\"email\",{\"type\":\"home\"},\"text\",\"alice.gregory@example.com\"],[\"tel\",{\"type\":[\"home\",\"cell\",\"voice\",\"text\"]},\"uri\",\"tel:(670)-328-1662\"]]]"
 
         var card: ContactCard?
@@ -345,8 +345,13 @@ class ContactCardTests: XCTestCase {
                     let phone = numbers[0]  // this is a TelProperty
                     XCTAssertTrue(phone.valueType == PropertyValueType.URI.rawValue)
                     
-                    // TODO: Test the parameters
-                    let typeParameter = phone.parameters["type"]
+                    if let typeParameter = phone.parameters["type"] {
+                        XCTAssertTrue(typeParameter.count == 4)
+                        XCTAssertTrue(typeParameter[0] == "home" && typeParameter[1] == "cell" && typeParameter[2] == "voice" && typeParameter[3] == "text")
+                    }
+                    else {
+                        XCTFail("No type parameter found in TEL property")
+                    }
                     
                     let value = phone.value as! String
                     XCTAssertTrue(value == "tel:(670)-328-1662")
@@ -361,6 +366,43 @@ class ContactCardTests: XCTestCase {
         }
     }
     
+    func testTelProperty_oneParameterValue() {
+        let jCard = "[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"n\",{},\"text\",[\"Gregory\",\"Alice\",\"\",\"\",\"\"]],[\"fn\",{},\"text\",\"Alice Gregory\"],[\"bday\",{},\"date\",\"--10-08\"],[\"adr\",{\"type\":\"home\"},\"text\",[\"\",\"\",\"1351 Edwards Rd\",\"Pompano Beach\",\"Maryland\",\"50980\",\"US\"]],[\"email\",{\"type\":\"home\"},\"text\",\"alice.gregory@example.com\"],[\"tel\",{\"type\":\"home\"},\"uri\",\"tel:(670)-328-1662\"]]]"
+        
+        var card: ContactCard?
+        do {
+            card = try cardFrom(JSONString: jCard)
+            
+            if let numbers = card?.phoneNumbers {
+                // There should be one phone number for Alice, and home/cell+voice+text
+                if numbers.count != 1 {
+                    XCTFail("Expected one TEL property")
+                }
+                else {
+                    let phone = numbers[0]  // this is a TelProperty
+                    XCTAssertTrue(phone.valueType == PropertyValueType.URI.rawValue)
+                    
+                    if let typeParameter = phone.parameters["type"] {
+                        XCTAssertTrue(typeParameter.count == 1)
+                        XCTAssertTrue(typeParameter[0] == "home")
+                    }
+                    else {
+                        XCTFail("No type parameter found in TEL property")
+                    }
+                    
+                    let value = phone.value as! String
+                    XCTAssertTrue(value == "tel:(670)-328-1662")
+                }
+            }
+            else {
+                XCTFail("No TEL properties found")
+            }
+        }
+        catch _ {
+            XCTFail("Error parsing jCard")
+        }
+    }
+
     func testEmailProperty() {
         var card: ContactCard?
         do {
