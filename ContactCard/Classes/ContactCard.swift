@@ -24,10 +24,11 @@ import Foundation
 import Contacts
 import SwiftyJSON
 
-let emptyParameters = [String: [String]]()
-let cardVersion = "4.0"
+public typealias PropertyParameters = [String: [String]]
 
-typealias PropertyParameters = [String: [String]]
+let emptyParameters = PropertyParameters()
+let cardVersion = "4.0"
+let cardIdentifier = "vcard"
 
 public enum PropertyName: String {
     case version = "version"
@@ -104,7 +105,7 @@ public enum PropertyValueType: String {
 // output as single values, and longer arrays as actual arrays.
 protocol ValueProperty {
     var name: String { get }
-    var parameters: [String: [String]] { get set }
+    var parameters: PropertyParameters { get set }
     var valueType: String { get set }
     var value: AnyObject { get set }
     
@@ -113,14 +114,14 @@ protocol ValueProperty {
 
 protocol StructuredValueProperty {
     var name: String { get }
-    var parameters: [String: [String]] { get set }
+    var parameters: PropertyParameters { get set }
     var valueType: String { get set }
     var value: [String] { get set }
     
     func asArray() -> [AnyObject]
 }
 
-func unravelParameters(parameters: [String: [String]]) -> Dictionary<String, AnyObject> {
+func unravelParameters(parameters: PropertyParameters) -> Dictionary<String, AnyObject> {
     // For each key in parameters:
     // If the array element count is 0,
     //     append empty parameter dictionary
@@ -144,13 +145,13 @@ func unravelParameters(parameters: [String: [String]]) -> Dictionary<String, Any
 
 public struct VersionProperty: ValueProperty {
     var name: String
-    var parameters: [String: [String]]
+    var parameters: PropertyParameters
     var valueType: String
     var value: AnyObject
     
     init() {
         name = PropertyName.version.rawValue
-        parameters = [String: [String]]()
+        parameters = emptyParameters
         valueType = PropertyValueType.text.rawValue
         value = cardVersion as AnyObject
     }
@@ -167,13 +168,13 @@ public struct VersionProperty: ValueProperty {
 
 public struct KindProperty: ValueProperty {
     var name: String
-    var parameters: [String: [String]]
+    var parameters: PropertyParameters
     var valueType: String
     var value: AnyObject
     
     init() {
         name = PropertyName.kind.rawValue
-        parameters = [String: [String]]()
+        parameters = emptyParameters
         valueType = PropertyValueType.text.rawValue
         self.value = "" as AnyObject
     }
@@ -194,13 +195,13 @@ public struct KindProperty: ValueProperty {
 
 public struct FormattedNameProperty: ValueProperty {
     var name: String
-    var parameters: [String: [String]]
+    var parameters: PropertyParameters
     var valueType: String
     var value: AnyObject
     
     init() {
         name = PropertyName.formattedName.rawValue
-        parameters = [String: [String]]()
+        parameters = emptyParameters
         valueType = PropertyValueType.text.rawValue
         self.value = "" as AnyObject
     }
@@ -217,13 +218,13 @@ public struct FormattedNameProperty: ValueProperty {
 
 public struct NicknameProperty: StructuredValueProperty {
     var name: String
-    var parameters: [String: [String]]
+    var parameters: PropertyParameters
     var valueType: String
     var value: [String]
     
     init(values: [String]) {
         name = PropertyName.nickname.rawValue
-        parameters = [String: [String]]()
+        parameters = emptyParameters
         valueType = PropertyValueType.text.rawValue
         value = values
     }
@@ -246,7 +247,7 @@ public struct NicknameProperty: StructuredValueProperty {
 
 public struct TitleProperty: ValueProperty {
     var name: String
-    var parameters: [String: [String]]
+    var parameters: PropertyParameters
     var valueType: String
     var value: AnyObject
     
@@ -269,7 +270,7 @@ public struct TitleProperty: ValueProperty {
 
 public struct VendorProperty: ValueProperty {
     var name: String
-    var parameters: [String: [String]]
+    var parameters: PropertyParameters
     var valueType: String
     public var value: AnyObject
     
@@ -297,7 +298,6 @@ public enum KindPropertyValue: String {
     case location = "location"
 }
 
-
 public enum DatePropertyValueType: String {
     case date = "date"
     case time = "time"
@@ -307,7 +307,7 @@ public enum DatePropertyValueType: String {
 
 public struct BirthdayProperty: ValueProperty {
     var name: String
-    var parameters: [String: [String]]
+    var parameters: PropertyParameters
     var valueType: String
     var value: AnyObject
     
@@ -364,7 +364,7 @@ public enum NameComponentIndex: Int {
 
 public struct NameProperty: StructuredValueProperty {
     var name: String
-    var parameters: [String: [String]]
+    var parameters: PropertyParameters
     var valueType: String
     var value: [String]
     
@@ -419,7 +419,7 @@ public struct NameProperty: StructuredValueProperty {
 
 public struct OrgProperty: StructuredValueProperty {
     var name: String
-    var parameters: [String: [String]]
+    var parameters: PropertyParameters
     var valueType: String
     var value: [String]
     
@@ -436,7 +436,6 @@ public struct OrgProperty: StructuredValueProperty {
         arr.append(unravelParameters(parameters: self.parameters) as AnyObject)
         arr.append(valueType as AnyObject)
 
-        var parts = [String]()
         if value.count == 1 {
             arr.append(value[0] as AnyObject)
         }
@@ -449,7 +448,7 @@ public struct OrgProperty: StructuredValueProperty {
 
 public struct TelProperty: ValueProperty {
     var name: String
-    public var parameters: [String: [String]]
+    public var parameters: PropertyParameters
     var valueType: String
     var value: AnyObject
     
@@ -474,7 +473,7 @@ public struct TelProperty: ValueProperty {
 
 public struct EmailProperty: ValueProperty {
     var name: String
-    public var parameters: [String: [String]]
+    public var parameters: PropertyParameters
     var valueType: String
     var value: AnyObject
     
@@ -497,7 +496,7 @@ public struct EmailProperty: ValueProperty {
 
 public struct AdrProperty: StructuredValueProperty {
     var name: String
-    public var parameters: [String: [String]]
+    public var parameters: PropertyParameters
     var valueType: String
     var value: [String]
     
@@ -553,7 +552,7 @@ public struct AdrProperty: StructuredValueProperty {
 
 public struct URLProperty: ValueProperty {
     var name: String
-    public var parameters: [String: [String]]
+    public var parameters: PropertyParameters
     var valueType: String
     var value: AnyObject
     
@@ -576,7 +575,7 @@ public struct URLProperty: ValueProperty {
 
 public struct SocialProfileProperty: StructuredValueProperty {
     var name: String
-    public var parameters: [String: [String]]
+    public var parameters: PropertyParameters
     var valueType: String
     var value: [String]
     
@@ -633,7 +632,7 @@ public struct ContactCard {
     
     public func asJSON() -> String {
         var repr = [AnyObject]()
-        repr.append("vcard" as AnyObject)
+        repr.append(cardIdentifier as AnyObject)
         
         var properties = [AnyObject]()
         properties.append(self.version.asArray() as AnyObject)
@@ -935,6 +934,7 @@ public func contactFrom(card: ContactCard) -> CNMutableContact {
     
     if let nickname = card.nickname {
         contact.nickname = nickname.value as! String
+        // TODO: Fix cause of typecast warning
     }
     
     if let cardSocialProfiles = card.socialProfiles {
@@ -970,15 +970,7 @@ public func contactFrom(card: ContactCard) -> CNMutableContact {
         
         contact.socialProfiles = contactSocialProfiles
     }
-    
-    /*
-     print("CNMutableContact phone numbers: \(contact.phoneNumbers.count)")
-     print("CNMutableContact URL addresses: \(contact.urlAddresses.count)")
-     print("CNMutableContact e-mail addresses: \(contact.emailAddresses.count)")
-     print("CNMutableContact postal addresses: \(contact.postalAddresses.count)")
-     print("CNMutableContact social profiles: \(contact.socialProfiles.count)")
-     */
-    
+
     // Vendor properties will not contribute to the contact, at least not at this time.
     
     return contact
@@ -1024,7 +1016,7 @@ public func cardFrom(contact: CNContact) -> ContactCard {
         card.org = OrgProperty(values: values)
     }
     else {
-        print("No contact.organizationName")
+        print("No organization")
     }
     
     var title = TitleProperty()
@@ -1250,7 +1242,7 @@ public func cardFrom(contact: CNContact) -> ContactCard {
             
             // The final jCard form of the social profile will be like this:
             // ["x-socialprofile", {"type": "x-twitter"}, "text", ["Twitter", "url", "", "username"]]
-            social.parameters = ["type": ["x-" + value.service]]
+            social.parameters = ["type": ["x-" + serviceType]]
             profiles.append(social)
         }
         
@@ -1279,9 +1271,6 @@ public func cardFrom(contact: CNContact) -> ContactCard {
     
     return card
 }
-
-
-let vCardString = "vcard"
 
 enum PropertyIndex: Int {
     case name
@@ -1368,7 +1357,7 @@ public func cardFrom(JSONString: String) throws -> ContactCard {
     let j = JSON(data: dataFromString)
     let signature = j[0].string
     
-    guard signature == vCardString
+    guard signature == cardIdentifier
     else {
         throw JCardError.InvalidFormat
     }
@@ -1400,7 +1389,6 @@ public func cardFrom(JSONString: String) throws -> ContactCard {
         case PropertyName.name.rawValue:
             var nameProperty = NameProperty()
             // No need to set empty parameters
-            let valueType = property[PropertyIndex.valueType.rawValue]
             let nameComponents = property[PropertyIndex.value.rawValue]  // an array of components
             // There should be exactly five name components.
             // Any of the components could itself be an array.
@@ -1412,7 +1400,6 @@ public func cardFrom(JSONString: String) throws -> ContactCard {
                     print("\(index): \(component)")
                     var componentList = [String]()
                     
-                    let type = component.type
                     switch component.type {
                     case .string:
                         if component.string! != "" {
