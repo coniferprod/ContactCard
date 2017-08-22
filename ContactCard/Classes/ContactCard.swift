@@ -713,6 +713,27 @@ public struct ContactCard {
         return "{}"
     }
     
+    //
+    // Convert to vCard 3.0. Does not take into account special cases like
+    // quotes and line folding. Maybe look for a library to do this properly?
+    // Although vCard is not the primary output format, but it needs to be 
+    // supported for wider compatibility.
+    //
+    public func asvCard() -> String {
+        var lines = [String]()
+        
+        lines.append("BEGIN:VCARD")
+        lines.append("VERSION:3.0")
+        
+        lines.append("FN:" + self.formattedName.name)
+        
+        lines.append("END:VCARD")
+        
+        // Concatenate all the lines into one string, with CR LF separators
+        let cardString = ""
+        return cardString
+    }
+    
     // If there is more than one vendor property with the same name,
     // this function takes the first and discards the rest.
     // Returns nil if there is not even one property with the given name.
@@ -934,7 +955,7 @@ public func contactFrom(card: ContactCard) -> CNMutableContact {
     }
     
     if let nickname = card.nickname {
-        contact.nickname = nickname.value as! String
+        contact.nickname = nickname.value[0]
     }
     
     if let cardSocialProfiles = card.socialProfiles {
