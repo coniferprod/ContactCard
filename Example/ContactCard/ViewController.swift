@@ -43,7 +43,16 @@ class ViewController: UIViewController, CNContactPickerDelegate {
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
         print("User did select contact")
         let card = cardFrom(contact: contact)
-        print(card.asJSON())
+        
+        let cardAsJSON = card.asJSON()
+        print("Contact card as JSON (\(cardAsJSON.characters.count) characters):")
+        print(cardAsJSON)
+        
+        print("\n")
+        
+        let cardAsvCard = card.asvCard()
+        print("Contact card as vCard 3.0 (\(cardAsvCard.characters.count) characters):")
+        print(cardAsvCard)
     }
 }
 
