@@ -85,6 +85,7 @@ public enum TypeParameterValue: String {
     case twitter = "x-twitter"
     case facebook = "x-facebook"
     case linkedIn = "x-linkedin"
+    case pref = "pref"
 }
 
 public enum PropertyValueType: String {
@@ -715,7 +716,7 @@ public struct ContactCard {
     //
     // Convert to vCard 3.0. Does not take into account special cases like
     // quotes and line folding. Maybe look for a library to do this properly?
-    // Although vCard is not the primary output format, but it needs to be 
+    // Although vCard is not the primary output format, it needs to be
     // supported for wider compatibility.
     //
     public func asvCard() -> String {
@@ -724,12 +725,141 @@ public struct ContactCard {
         lines.append("BEGIN:VCARD")
         lines.append("VERSION:3.0")
         
-        lines.append("FN:" + self.formattedName.name)
+        lines.append("FN:" + (self.formattedName.value as! String))
+
+        // vCard 3.0 does not have KIND property
+
+        if let name = self.name {
+            var nameParts = ""
+            nameParts.append(name.familyNames.joined(separator: ","))
+            nameParts.append(";")
+            nameParts.append(name.givenNames.joined(separator: ","))
+            nameParts.append(";")
+            nameParts.append(name.additionalNames.joined(separator: ","))
+            nameParts.append(";")
+            nameParts.append(name.honorificPrefixes.joined(separator: ","))
+            nameParts.append(";")
+            nameParts.append(name.honorificSuffixes.joined(separator: ","))
+            
+            lines.append("N:" + nameParts)
+        }
         
+        if let nickname = self.nickname {
+            lines.append("NICKNAME:" + nickname.value.joined(separator: ";"))
+        }
+
+        if let bday = self.bday {
+            lines.append("BDAY:" + (bday.value as! String))
+        }
+        
+        if let org = self.org {
+            lines.append("ORG:" + org.value.joined(separator: ";"))
+        }
+        
+        if let title = self.title {
+            lines.append("TITLE:" + (title.value as! String))
+        }
+        
+        // TODO: Any PREF=1 parameters should be TYPE values
+        // i.e. not "TYPE=work;PREF=1" but "TYPE=work,pref"
+        
+        if let phoneNumbers = self.phoneNumbers {
+            for phoneNumber in phoneNumbers {
+                var line = "TEL"
+                var paramStrings = [String]()
+                for param in phoneNumber.parameters {
+                    let paramString = "\(param.key.uppercased())=\(param.value.joined(separator: ","))"
+                    paramStrings.append(paramString)
+                }
+                if paramStrings.count != 0 {
+                    line.append(";")
+                    line.append(paramStrings.joined(separator: ";"))
+                }
+                line.append(":")
+                line.append(phoneNumber.value as! String)
+                lines.append(line)
+            }
+        }
+
+        if let emailAddresses = self.emailAddresses {
+            for email in emailAddresses {
+                var line = "EMAIL"
+                var paramPart = ""
+                for param in email.parameters {
+                    let paramString = "\(param.key.uppercased())=\(param.value.joined(separator: ","))"
+                    paramPart.append(paramString)
+                }
+                if paramPart != "" {
+                    line.append(";")
+                    line.append(paramPart)
+                }
+                line.append(":")
+                line.append(email.value as! String)
+                lines.append(line)
+            }
+        }
+        
+        if let postalAddresses = self.postalAddresses {
+            for address in postalAddresses {
+                var line = "ADR"
+                var paramPart = ""
+                for param in address.parameters {
+                    let paramString = "\(param.key.uppercased())=\(param.value.joined(separator: ","))"
+                    paramPart.append(paramString)
+                }
+                if paramPart != "" {
+                    line.append(";")
+                    line.append(paramPart)
+                }
+                line.append(":")
+
+                let values = [address.street, address.city, address.state, address.postalCode, address.country]
+                line.append(values.joined(separator: ";"))
+                lines.append(line)
+            }
+        }
+
+        if let urlAddresses = self.urlAddresses {
+            for url in urlAddresses {
+                var line = "ADR"
+                var paramPart = ""
+                for param in url.parameters {
+                    let paramString = "\(param.key.uppercased())=\(param.value.joined(separator: ","))"
+                    paramPart.append(paramString)
+                }
+                if paramPart != "" {
+                    line.append(";")
+                    line.append(paramPart)
+                }
+                line.append(":")
+                line.append(url.value as! String)
+                lines.append(line)
+            }
+        }
+
+        if let socialProfiles = self.socialProfiles {
+            for profile in socialProfiles {
+                var line = "X-SOCIALPROFILE"
+                var paramPart = ""
+                for param in profile.parameters {
+                    let paramString = "\(param.key.uppercased())=\(param.value.joined(separator: ","))"
+                    paramPart.append(paramString)
+                }
+                if paramPart != "" {
+                    line.append(";")
+                    line.append(paramPart)
+                }
+                line.append(":")
+                let values = [profile.service, profile.urlString, profile.userIdentifier, profile.username]
+                line.append(values.joined(separator: ";"))
+                lines.append(line)
+            }
+        }
+
         lines.append("END:VCARD")
         
         // Concatenate all the lines into one string, with CR LF separators
-        let cardString = ""
+        let cardString = lines.joined(separator: "\r\n")
         return cardString
     }
     
@@ -1093,18 +1223,16 @@ public func cardFrom(contact: CNContact) -> ContactCard {
             if label == CNLabelPhoneNumberiPhone {
                 typeParameterValues.append(.iPhone)
             }
-            
+
+            if label == CNLabelPhoneNumberMain {  // main number
+                typeParameterValues.append(.pref)
+            }
+
             var stringTypeParameters = PropertyParameters()
             if typeParameterValues.count != 0 {
                 stringTypeParameters["type"] = typeParameterValues.map({ $0.rawValue })
             }
-            //var stringTypeParameters = ["type": typeParameterValues.map({ $0.rawValue })]
             
-            if label == CNLabelPhoneNumberMain {  // main number
-                stringTypeParameters["pref"] = ["1"]
-            }
-            
-            //print(stringTypeParameters)
             tel.parameters = stringTypeParameters
             
             tel.value = digits as AnyObject
@@ -1137,7 +1265,6 @@ public func cardFrom(contact: CNContact) -> ContactCard {
             if typeParameterValues.count != 0 {
                 stringTypeParameters["type"] = typeParameterValues.map({ $0.rawValue })
             }
-            //let stringTypeParameters = ["type": typeParameterValues.map({ $0.rawValue })]
             
             // TODO: What about the 'pref' parameter?
             
@@ -1172,7 +1299,6 @@ public func cardFrom(contact: CNContact) -> ContactCard {
                 stringTypeParameters["type"] = typeParameterValues.map({ $0.rawValue })
             }
             adr.parameters = stringTypeParameters
-            //adr.parameters = ["type": typeParameterValues.map({ $0.rawValue })]
             
             let address = postalAddress.value
             adr.street = address.street
@@ -1208,9 +1334,8 @@ public func cardFrom(contact: CNContact) -> ContactCard {
                 stringTypeParameters["type"] = typeParameterValues.map({ $0.rawValue })
             }
             url.parameters = stringTypeParameters
-            //url.parameters = ["type": typeParameterValues.map({ $0.rawValue })]
             
-            url.value = urlAddress.value as String as String as AnyObject  // TODO: WTF?
+            url.value = urlAddress.value
             urlAddresses.append(url)
         }
         
