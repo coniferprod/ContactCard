@@ -134,6 +134,36 @@ class ContactCardTests: XCTestCase {
             XCTFail("Error parsing jCard")
         }
     }
+
+    func test_vCard_commaInFormattedNameIsEscaped() {
+        // FN:Mr. John Q. Public\, Esq.
+        let jCard = "[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Mr. John Q. Public, Esq.\"]]]"
+        var card: ContactCard?
+        do {
+            card = try cardFrom(JSONString: jCard)
+            let vCardString = card!.asvCard()
+            print(vCardString)
+            XCTAssertTrue(vCardString.contains("FN:Mr. John Q. Public\\, Esq."))
+        }
+        catch _ {
+            XCTFail("Error parsing jCard")
+        }
+    }
+
+    func testNameProperty_vCard_commasInValueListAreEscaped() {
+        let jCard = "[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"John Stevenson, den; or maybe not\"],[\"n\",{},\"text\",[\"Stevenson, den; or maybe not\",\"John\",[\"Philip\",\"Paul\"],\"Dr.\",[\"Jr.\",\"M.D.\",\"A.C.P.\"]]]]]"
+        var card: ContactCard?
+        do {
+            card = try cardFrom(JSONString: jCard)
+            
+            let vCardString = card!.asvCard()
+            print(vCardString)
+            XCTAssertTrue(vCardString.contains("N:Stevenson\\, den\\;or maybe not;John;Philip,Paul;Dr.;Jr.,M.D.,A.C.P."))
+        }
+        catch _ {
+            XCTFail("Error parsing jCard")
+        }
+    }
     
     // FN (mandatory)
     func testFormattedNameProperty() {

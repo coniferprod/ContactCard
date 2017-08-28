@@ -725,27 +725,59 @@ public struct ContactCard {
         lines.append("BEGIN:VCARD")
         lines.append("VERSION:3.0")
         
-        lines.append("FN:" + (self.formattedName.value as! String))
-
+        let originalFormattedName = (self.formattedName.value as! String)
+        let formattedName = commaAndSemicolonEscaped(value: originalFormattedName)
+        lines.append("FN:" + formattedName)
+        
         // vCard 3.0 does not have KIND property
 
         if let name = self.name {
             var nameParts = ""
-            nameParts.append(name.familyNames.joined(separator: ","))
+
+            var escapedFamilyNames: [String] = []
+            for n in name.familyNames {
+                escapedFamilyNames.append(commaAndSemicolonEscaped(value: n))
+            }
+            
+            nameParts.append(escapedFamilyNames.joined(separator: ","))
             nameParts.append(";")
-            nameParts.append(name.givenNames.joined(separator: ","))
+            
+            var escapedGivenNames: [String] = []
+            for n in name.givenNames {
+                escapedGivenNames.append(commaAndSemicolonEscaped(value: n))
+            }
+            
+            nameParts.append(escapedGivenNames.joined(separator: ","))
             nameParts.append(";")
-            nameParts.append(name.additionalNames.joined(separator: ","))
+            
+            var escapedAdditionalNames: [String] = []
+            for n in name.additionalNames {
+                escapedAdditionalNames.append(commaAndSemicolonEscaped(value: n))
+            }
+
+            nameParts.append(escapedAdditionalNames.joined(separator: ","))
             nameParts.append(";")
-            nameParts.append(name.honorificPrefixes.joined(separator: ","))
+            
+            var escapedHonorificPrefixes: [String] = []
+            for n in name.honorificPrefixes {
+                escapedHonorificPrefixes.append(commaAndSemicolonEscaped(value: n))
+            }
+            
+            nameParts.append(escapedHonorificPrefixes.joined(separator: ","))
             nameParts.append(";")
-            nameParts.append(name.honorificSuffixes.joined(separator: ","))
+            
+            
+            var escapedHonorificSuffixes: [String] = []
+            for n in name.honorificSuffixes {
+                escapedHonorificSuffixes.append(commaAndSemicolonEscaped(value: n))
+            }
+            nameParts.append(escapedHonorificSuffixes.joined(separator: ","))
             
             lines.append("N:" + nameParts)
         }
         
         if let nickname = self.nickname {
-            lines.append("NICKNAME:" + nickname.value.joined(separator: ";"))
+            lines.append("NICKNAME:" + nickname.value.joined(separator: ","))
         }
 
         if let bday = self.bday {
@@ -755,13 +787,11 @@ public struct ContactCard {
         if let org = self.org {
             lines.append("ORG:" + org.value.joined(separator: ";"))
         }
+        // TODO: Escape commas and semicolons in org values
         
         if let title = self.title {
-            lines.append("TITLE:" + (title.value as! String))
+            lines.append("TITLE:" + commaAndSemicolonEscaped(value: (title.value as! String)))
         }
-        
-        // TODO: Any PREF=1 parameters should be TYPE values
-        // i.e. not "TYPE=work;PREF=1" but "TYPE=work,pref"
         
         if let phoneNumbers = self.phoneNumbers {
             for phoneNumber in phoneNumbers {
@@ -784,14 +814,14 @@ public struct ContactCard {
         if let emailAddresses = self.emailAddresses {
             for email in emailAddresses {
                 var line = "EMAIL"
-                var paramPart = ""
+                var paramStrings = [String]()
                 for param in email.parameters {
                     let paramString = "\(param.key.uppercased())=\(param.value.joined(separator: ","))"
-                    paramPart.append(paramString)
+                    paramStrings.append(paramString)
                 }
-                if paramPart != "" {
+                if paramStrings.count != 0 {
                     line.append(";")
-                    line.append(paramPart)
+                    line.append(paramStrings.joined(separator: ";"))
                 }
                 line.append(":")
                 line.append(email.value as! String)
@@ -802,18 +832,23 @@ public struct ContactCard {
         if let postalAddresses = self.postalAddresses {
             for address in postalAddresses {
                 var line = "ADR"
-                var paramPart = ""
+                var paramStrings = [String]()
                 for param in address.parameters {
                     let paramString = "\(param.key.uppercased())=\(param.value.joined(separator: ","))"
-                    paramPart.append(paramString)
+                    paramStrings.append(paramString)
                 }
-                if paramPart != "" {
+                if paramStrings.count != 0 {
                     line.append(";")
-                    line.append(paramPart)
+                    line.append(paramStrings.joined(separator: ";"))
                 }
                 line.append(":")
 
-                let values = [address.street, address.city, address.state, address.postalCode, address.country]
+                let values = [
+                    commaAndSemicolonEscaped(value: address.street),
+                    commaAndSemicolonEscaped(value: address.city),
+                    commaAndSemicolonEscaped(value: address.state),
+                    commaAndSemicolonEscaped(value: address.postalCode),
+                    commaAndSemicolonEscaped(value: address.country)]
                 line.append(values.joined(separator: ";"))
                 lines.append(line)
             }
@@ -821,15 +856,15 @@ public struct ContactCard {
 
         if let urlAddresses = self.urlAddresses {
             for url in urlAddresses {
-                var line = "ADR"
-                var paramPart = ""
+                var line = "URL"
+                var paramStrings = [String]()
                 for param in url.parameters {
                     let paramString = "\(param.key.uppercased())=\(param.value.joined(separator: ","))"
-                    paramPart.append(paramString)
+                    paramStrings.append(paramString)
                 }
-                if paramPart != "" {
+                if paramStrings.count != 0 {
                     line.append(";")
-                    line.append(paramPart)
+                    line.append(paramStrings.joined(separator: ";"))
                 }
                 line.append(":")
                 line.append(url.value as! String)
@@ -840,14 +875,14 @@ public struct ContactCard {
         if let socialProfiles = self.socialProfiles {
             for profile in socialProfiles {
                 var line = "X-SOCIALPROFILE"
-                var paramPart = ""
+                var paramStrings = [String]()
                 for param in profile.parameters {
                     let paramString = "\(param.key.uppercased())=\(param.value.joined(separator: ","))"
-                    paramPart.append(paramString)
+                    paramStrings.append(paramString)
                 }
-                if paramPart != "" {
+                if paramStrings.count != 0 {
                     line.append(";")
-                    line.append(paramPart)
+                    line.append(paramStrings.joined(separator: ";"))
                 }
                 line.append(":")
                 let values = [profile.service, profile.urlString, profile.userIdentifier, profile.username]
@@ -860,7 +895,17 @@ public struct ContactCard {
         
         // Concatenate all the lines into one string, with CR LF separators
         let cardString = lines.joined(separator: "\r\n")
+        
+        // RFC 2426 says lines SHOULD be folded. Maybe soon, but not now.
+        
         return cardString
+    }
+
+    private func commaAndSemicolonEscaped(value: String) -> String {
+        return
+            value
+                .replacingOccurrences(of: ",", with: "\\,")
+                .replacingOccurrences(of: ";", with: "\\;")
     }
     
     // If there is more than one vendor property with the same name,
