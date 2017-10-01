@@ -1,25 +1,19 @@
 PODS:
-  - ContactCard (0.2.0):
+  - ContactCard (0.3.5):
     - SwiftyJSON
-  - Nimble (5.1.1)
-  - Quick (1.0.0)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - ContactCard (from `../`)
-  - Nimble (~> 5.1.1)
-  - Quick (~> 1.0.0)
 
 EXTERNAL SOURCES:
   ContactCard:
-    :path: "../"
+    :path: ../
 
 SPEC CHECKSUMS:
-  ContactCard: 184e635c3549a3bd04244b8613d222768e379cd4
-  Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
-  Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
+  ContactCard: 6712cd39040e3817b9eb799f536d6dc65cb9dad1
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 37c3bb4a352456a47161606b3c26ef09252c17be
+PODFILE CHECKSUM: ed487709fc18b429cbe299074dd7918555f3d502
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.3.1

@@ -458,6 +458,33 @@ class ContactCardTests: XCTestCase {
         }
     }
     
+    func testEmalProperty_noType() {
+        let jCard = "[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"n\",{},\"text\",[\"Gregory\",\"Alice\",\"\",\"\",\"\"]],[\"fn\",{},\"text\",\"Alice Gregory\"],[\"email\",{},\"text\",\"alice.gregory@example.com\"]]]"
+        var card: ContactCard?
+        do {
+            card = try cardFrom(JSONString: jCard)
+
+            if let emails = card?.emailAddresses {
+                // There should be one e-mail address for Alice
+                if emails.count != 1 {
+                    XCTFail("Expected one e-mail address")
+                }
+                else {
+                    let email = emails[0]
+                    let value = email.value as! String
+                    XCTAssertTrue(value == "alice.gregory@example.com")
+                }
+            }
+            else {
+                XCTFail("No EMAIL properties found")
+            }
+        }
+        catch _ {
+            XCTFail("Error parsing jCard")
+        }
+
+    }
+    
     func testUrlProperty() {
         let jCard = "[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Marilou Lam\"],[\"n\",{},\"text\",[\"Lam\",\"Marilou\",\"\",\"\",\"Ms\"]],[\"adr\",{},\"text\",[\"\",\"\",\"3892 Duke St\",\"Oakville\",\"NJ\",\"79279\",\"U.S.A.\"]],[\"email\",{},\"text\",\"marilou.lam@example.com\"],[\"url\",{\"type\": \"home\"},\"uri\",\"http://www.example.com\"]]]"
         
