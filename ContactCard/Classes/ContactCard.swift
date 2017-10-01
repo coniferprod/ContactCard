@@ -965,39 +965,39 @@ public func contactFrom(card: ContactCard) -> CNMutableContact {
     if let cardPhoneNumbers = card.phoneNumbers {
         var contactPhoneNumbers = [CNLabeledValue<CNPhoneNumber>]()
         for phoneNumberProperty in cardPhoneNumbers {
-            let parameters = phoneNumberProperty.parameters
-            let typeParameterValues = parameters["type"]!
-            var label: String?
+            var label: String? = nil
             
-            if typeParameterValues.contains("fax") {
-                if typeParameterValues.contains("home") {
-                    label = CNLabelPhoneNumberHomeFax
+            if let typeParams = phoneNumberProperty.parameters["type"] {
+                if typeParams.contains("fax") {
+                    if typeParams.contains("home") {
+                        label = CNLabelPhoneNumberHomeFax
+                    }
+                    else if typeParams.contains("work") {
+                        label = CNLabelPhoneNumberWorkFax
+                    }
+                    else if typeParams.contains("other") {
+                        label = CNLabelPhoneNumberOtherFax
+                    }
                 }
-                else if typeParameterValues.contains("work") {
-                    label = CNLabelPhoneNumberWorkFax
+                else if typeParams.contains("pager") {
+                    label = CNLabelPhoneNumberPager
                 }
-                else if typeParameterValues.contains("other") {
-                    label = CNLabelPhoneNumberOtherFax
-                }
-            }
-            else if typeParameterValues.contains("pager") {
-                label = CNLabelPhoneNumberPager
-            }
-            else {  // must be a phone of some sort
-                if typeParameterValues.contains("home") {
-                    label = CNLabelHome
-                }
-                if typeParameterValues.contains("work") {
-                    label = CNLabelWork
-                }
-                if typeParameterValues.contains("work") {
-                    label = CNLabelOther
-                }
-                if typeParameterValues.contains("cell") {
-                    label = CNLabelPhoneNumberMobile
-                }
-                if typeParameterValues.contains("x-iphone") {
-                    label = CNLabelPhoneNumberiPhone
+                else {  // must be a phone of some sort
+                    if typeParams.contains("home") {
+                        label = CNLabelHome
+                    }
+                    if typeParams.contains("work") {
+                        label = CNLabelWork
+                    }
+                    if typeParams.contains("other") {
+                        label = CNLabelOther
+                    }
+                    if typeParams.contains("cell") {
+                        label = CNLabelPhoneNumberMobile
+                    }
+                    if typeParams.contains("x-iphone") {
+                        label = CNLabelPhoneNumberiPhone
+                    }
                 }
             }
             
@@ -1026,19 +1026,19 @@ public func contactFrom(card: ContactCard) -> CNMutableContact {
             address.postalCode = addressProperty.postalCode
             address.country = addressProperty.country
             
-            let parameters = addressProperty.parameters
-            let typeParameterValues = parameters["type"]
-            var label: String?
-            for t in typeParameterValues! {
-                switch t {
-                case "work":
-                    label = CNLabelWork
-                case "home":
-                    label = CNLabelHome
-                case "other":
-                    label = CNLabelOther
-                default:
-                    label = nil
+            var label: String? = nil
+            if let typeParams = addressProperty.parameters["type"] {
+                for t in typeParams {
+                    switch t {
+                    case "work":
+                        label = CNLabelWork
+                    case "home":
+                        label = CNLabelHome
+                    case "other":
+                        label = CNLabelOther
+                    default:
+                        label = nil
+                    }
                 }
             }
             

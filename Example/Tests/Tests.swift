@@ -322,6 +322,39 @@ class ContactCardTests: XCTestCase {
         }
     }
     
+    func testAddressProperty_noType() {
+        let jCard = "[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Alice Gregory\"],[\"adr\",{},\"text\",[\"\",\"\",\"1351 Edwards Rd\",\"Pompano Beach\",\"Maryland\",\"50980\",\"US\"]]]]"
+        var card: ContactCard?
+        do {
+            card = try cardFrom(JSONString: jCard)
+            
+            if let addresses = card?.postalAddresses {
+                // There should be one postal address for Alice
+                if addresses.count == 0 {
+                    XCTFail("No postal addresses found")
+                }
+                else {
+                    let address = addresses[0]  // this is an AdrProperty
+                    
+                    // There should be no type parameters
+                    XCTAssertTrue(address.parameters["type"] == nil)
+                    
+                    XCTAssertTrue(address.street == "1351 Edwards Rd")
+                    XCTAssertTrue(address.city == "Pompano Beach")
+                    XCTAssertTrue(address.state == "Maryland")
+                    XCTAssertTrue(address.postalCode == "50980")
+                    XCTAssertTrue(address.country == "US")
+                }
+            }
+            else {
+                XCTFail("No ADR properties found")
+            }
+        }
+        catch _ {
+            XCTFail("Error parsing jCard")
+        }
+    }
+    
     /*
     func testAddressProperty_label() {
         let jCard = "[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"fn\",{},\"text\",\"Alice Gregory\"],[\"adr\",{\"type\":\"home\",\"label\":\"Alice Gregory\\n1351 Edwards Rd\\nPompano Beach, MD 50980\"},\"text\",[\"\",\"\",\"1351 Edwards Rd\",\"Pompano Beach\",\"Maryland\",\"50980\",\"US\"]]]]"
@@ -432,6 +465,39 @@ class ContactCardTests: XCTestCase {
         }
     }
 
+    func testTelProperty_noTypeParameters() {
+        // The 'tel' property has an empty type parameter section
+        let jCard = "[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"n\",{},\"text\",[\"Gregory\",\"Alice\",\"\",\"\",\"\"]],[\"fn\",{},\"text\",\"Alice Gregory\"],[\"bday\",{},\"date\",\"--10-08\"],[\"adr\",{\"type\":\"home\"},\"text\",[\"\",\"\",\"1351 Edwards Rd\",\"Pompano Beach\",\"Maryland\",\"50980\",\"US\"]],[\"email\",{\"type\":\"home\"},\"text\",\"alice.gregory@example.com\"],[\"tel\",{},\"uri\",\"tel:(670)-328-1662\"]]]"
+        
+        var card: ContactCard?
+        do {
+            card = try cardFrom(JSONString: jCard)
+            
+            if let numbers = card?.phoneNumbers {
+                // There should be one phone number for Alice, with no type
+                if numbers.count != 1 {
+                    XCTFail("Expected one TEL property")
+                }
+                else {
+                    let phone = numbers[0]  // this is a TelProperty
+                    XCTAssertTrue(phone.valueType == PropertyValueType.URI.rawValue)
+                    
+                    XCTAssert(phone.parameters["type"] == nil)
+                    
+                    let value = phone.value as! String
+                    XCTAssertTrue(value == "tel:(670)-328-1662")
+                }
+            }
+            else {
+                XCTFail("No TEL properties found")
+            }
+        }
+        catch _ {
+            XCTFail("Error parsing jCard")
+        }
+
+    }
+        
     func testEmailProperty() {
         var card: ContactCard?
         do {
@@ -644,4 +710,4 @@ let sampleCards : [String: String] = [
 
 // jCard specification: https://tools.ietf.org/html/rfc7095
 // vCard 4.0 specification: https://tools.ietf.org/html/rfc6350
-
+// vCard 3.0 specification: https://www.ietf.org/rfc/rfc2426.txt
