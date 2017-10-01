@@ -1,6 +1,5 @@
-import Quick
-import Nimble
 import XCTest
+
 @testable import ContactCard
 
 class ContactCardTests: XCTestCase {
@@ -158,7 +157,7 @@ class ContactCardTests: XCTestCase {
             
             let vCardString = card!.asvCard()
             print(vCardString)
-            XCTAssertTrue(vCardString.contains("N:Stevenson\\, den\\;or maybe not;John;Philip,Paul;Dr.;Jr.,M.D.,A.C.P."))
+            XCTAssertTrue(vCardString.contains("N:Stevenson\\, den\\; or maybe not;John;Philip,Paul;Dr.;Jr.,M.D.,A.C.P."))
         }
         catch _ {
             XCTFail("Error parsing jCard")
@@ -458,7 +457,7 @@ class ContactCardTests: XCTestCase {
         }
     }
     
-    func testEmalProperty_noType() {
+    func testEmalProperty_noTypeParameters() {
         let jCard = "[\"vcard\",[[\"version\",{},\"text\",\"4.0\"],[\"n\",{},\"text\",[\"Gregory\",\"Alice\",\"\",\"\",\"\"]],[\"fn\",{},\"text\",\"Alice Gregory\"],[\"email\",{},\"text\",\"alice.gregory@example.com\"]]]"
         var card: ContactCard?
         do {
@@ -471,6 +470,10 @@ class ContactCardTests: XCTestCase {
                 }
                 else {
                     let email = emails[0]
+                    
+                    let typeParams = email.parameters["type"]
+                    XCTAssertTrue(typeParams == nil)
+                    
                     let value = email.value as! String
                     XCTAssertTrue(value == "alice.gregory@example.com")
                 }
@@ -501,8 +504,10 @@ class ContactCardTests: XCTestCase {
                     let url = urls[0]
                     XCTAssertTrue(url.valueType == PropertyValueType.URI.rawValue)
                     
-                    // TODO: Test the parameters
-                    let typeParameters = url.parameters["type"]
+                    if let typeParams = url.parameters["type"] {
+                        XCTAssert(typeParams.count == 1)
+                        XCTAssert(typeParams[0] == "home")
+                    }
                     
                     let value = url.value as! String
                     XCTAssertTrue(value == "http://www.example.com")
@@ -639,50 +644,4 @@ let sampleCards : [String: String] = [
 
 // jCard specification: https://tools.ietf.org/html/rfc7095
 // vCard 4.0 specification: https://tools.ietf.org/html/rfc6350
-
-class ContactCardSpec: QuickSpec {
-    override func spec() {
-        describe("these will fail") {
-
-            it("can do maths") {
-                expect(1) == 2
-            }
-
-            it("can read") {
-                expect("number") == "string"
-            }
-
-            it("will eventually fail") {
-                expect("time").toEventually( equal("done") )
-            }
-            
-            context("these will pass") {
-
-                it("can do maths") {
-                    expect(23) == 23
-                }
-
-                it("can read") {
-                    expect("🐮") == "🐮"
-                }
-
-                it("will eventually pass") {
-                    var time = "passing"
-
-                    DispatchQueue.main.async {
-                        time = "done"
-                    }
-
-                    waitUntil { done in
-                        Thread.sleep(forTimeInterval: 0.5)
-                        expect(time) == "done"
-
-                        done()
-                    }
-                }
-            }
-        }
-    }
-}
-
 

@@ -1054,20 +1054,25 @@ public func contactFrom(card: ContactCard) -> CNMutableContact {
         var contactEmailAddresses = [CNLabeledValue<NSString>]()
         for emailProperty in cardEmailAddresses {
             let email = emailProperty.value
-            var label: String?
-            for t in emailProperty.parameters["type"]! {
-                switch t {
-                case "work":
-                    label = CNLabelWork
-                case "home":
-                    label = CNLabelHome
-                case "other":
-                    label = CNLabelOther
-                default:
-                    label = nil
+            var label: String? = nil
+            // The label will remain nil if there are no type parameters
+            if let typeParams = emailProperty.parameters["type"] {
+                for t in typeParams {
+                    switch t {
+                    case "work":
+                        label = CNLabelWork
+                    case "home":
+                        label = CNLabelHome
+                    case "other":
+                        label = CNLabelOther
+                    default:
+                        label = nil
+                    }
                 }
             }
             
+            // According to the CNLabeledValue documentation, the `label` argument
+            // can be nil if the value doesn't have a label.
             contactEmailAddresses.append(CNLabeledValue(label: label, value: email as! NSString))
         }
         
