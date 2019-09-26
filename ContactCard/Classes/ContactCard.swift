@@ -1004,7 +1004,7 @@ public func contactFrom(card: ContactCard) -> CNMutableContact {
             var phoneNumberValue = phoneNumberProperty.value
             if phoneNumberValue.hasPrefix("tel:") {
                 let phoneNumberString = phoneNumberValue as! String
-                phoneNumberValue = String(phoneNumberString.characters.dropFirst("tel:".characters.count)) as AnyObject
+                phoneNumberValue = String(phoneNumberString.dropFirst("tel:".count)) as AnyObject
             }
             let phoneNumber = CNLabeledValue(label: label, value: CNPhoneNumber(stringValue: phoneNumberValue as! String))
             
@@ -1486,24 +1486,24 @@ func parseBirthday(value: String) -> NSDateComponents {
     if value.hasPrefix("--") { // it's a yearless date
         components.year = NSDateComponentUndefined
         
-        let monthAndDay = String(value.characters.dropFirst(2)) // take all after the "--"
+        let monthAndDay = String(value.dropFirst(2)) // take all after the "--"
         
-        let month = String(monthAndDay.characters.dropLast(3))  // take just the initial "mm"
+        let month = String(monthAndDay.dropLast(3))  // take just the initial "mm"
         components.month = Int(month)!
         
-        let day = String(monthAndDay.characters.dropFirst(3)) // take all after the "mm-"
+        let day = String(monthAndDay.dropFirst(3)) // take all after the "mm-"
         components.day = Int(day)!
     }
     else {  // it has year, month and date
-        let year = String(value.characters.prefix(4))
+        let year = String(value.prefix(4))
         components.year = Int(year)!
         
-        let monthAndDay = String(value.characters.dropFirst(4)) // take all after the "yyyy"
+        let monthAndDay = String(value.dropFirst(4)) // take all after the "yyyy"
         
-        let month = String(monthAndDay.characters.prefix(2))
+        let month = String(monthAndDay.prefix(2))
         components.month = Int(month)!
         
-        let day = String(monthAndDay.characters.suffix(2))
+        let day = String(monthAndDay.suffix(2))
         components.day = Int(day)!
     }
     

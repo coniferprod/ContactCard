@@ -22,7 +22,9 @@ class ViewController: UIViewController, CNContactPickerDelegate {
         controller.delegate = self
         
         ContactAuthorizer.authorizeContacts { succeeded in
-            self.pickContactButton.isEnabled = succeeded
+            DispatchQueue.main.async { [weak self] in
+                self?.pickContactButton.isEnabled = succeeded
+            }
         }
     }
 
@@ -45,13 +47,13 @@ class ViewController: UIViewController, CNContactPickerDelegate {
         let card = cardFrom(contact: contact)
         
         let cardAsJSON = card.asJSON()
-        print("Contact card as JSON (\(cardAsJSON.characters.count) characters):")
+        print("Contact card as JSON (\(cardAsJSON.count) characters):")
         print(cardAsJSON)
         
         print("\n")
         
         let cardAsvCard = card.asvCard()
-        print("Contact card as vCard 3.0 (\(cardAsvCard.characters.count) characters):")
+        print("Contact card as vCard 3.0 (\(cardAsvCard.count) characters):")
         print(cardAsvCard)
     }
 }

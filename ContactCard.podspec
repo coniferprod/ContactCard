@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ContactCard'
-  s.version          = '0.3.5'
+  s.version          = '0.3.6'
   s.summary          = 'Contacts framework helper for jCard processing.'
 
   s.description      = <<-DESC
@@ -27,5 +27,5 @@ Converts from CNContact to jCard, or from jCard to CNMutableContact.
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
 
-  s.dependency 'SwiftyJSON'
+  s.dependency 'SwiftyJSON', '~> 4.2.0'
 end
