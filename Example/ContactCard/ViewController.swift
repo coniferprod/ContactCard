@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  ContactCard
-//
-//  Created by Jere Käpyaho on 03/14/2017.
-//  Copyright (c) 2017 Jere Käpyaho. All rights reserved.
-//
-
 import UIKit
 import ContactsUI
 import ContactCard

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ContactCard'
-  s.version          = '0.3.6'
+  s.version          = '0.3.7'
   s.summary          = 'Contacts framework helper for jCard processing.'
 
   s.description      = <<-DESC
@@ -15,7 +15,7 @@ Converts from CNContact to jCard, or from jCard to CNMutableContact.
   s.source           = { :git => 'https://github.com/coniferprod/ContactCard.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/coniferprod'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '11.0'
   s.ios.frameworks = 'Foundation', 'Contacts'
 
   s.source_files = 'ContactCard/Classes/**/*'
@@ -27,5 +27,5 @@ Converts from CNContact to jCard, or from jCard to CNMutableContact.
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
 
-  s.dependency 'SwiftyJSON', '~> 4.2.0'
+  s.dependency 'SwiftyJSON'
 end

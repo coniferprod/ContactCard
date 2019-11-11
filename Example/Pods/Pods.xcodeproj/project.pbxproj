@@ -7,343 +7,400 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		16E83EBABD56A5B4A7FEDC70413BBEB5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FEB5DE384A1B0B19D70589DD66AB73 /* Foundation.framework */; };
-		32E3802522C3175E0A3218002FD88335 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FEB5DE384A1B0B19D70589DD66AB73 /* Foundation.framework */; };
-		3D9EB916F8B33AE17D979133E50C9EA8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FEB5DE384A1B0B19D70589DD66AB73 /* Foundation.framework */; };
-		4960E88D73F2E7BF466961B47A8377CD /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67FFCD49AD003C79D3140174B3342095 /* SwiftyJSON.framework */; };
-		637635FE7093DEC40969D2F3C63907DE /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B9BBA8F5B33E56C38F5546432F66B7 /* SwiftyJSON-dummy.m */; };
-		6E64C375658B4B45C6A0AC4F4AD67F02 /* Pods-ContactCard_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 68D0040CC9408A04D20DF08F879FCF05 /* Pods-ContactCard_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		70C62D227F5C660FC514474BED697743 /* ContactCard-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4647B529758C580EE634B02D0C5164DB /* ContactCard-dummy.m */; };
-		96E0DECC12A25ED0746ABE23A1F89EDF /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DA463136750542E05FC5103455108F /* Contacts.framework */; };
-		BA20749F6AE675E2B33324D58487A308 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20FEB5DE384A1B0B19D70589DD66AB73 /* Foundation.framework */; };
-		BFD37CF3F6597621259A0D77EAA81E05 /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 05CA09B061E193906653AC21FD3A94F1 /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C7CE01FF4097E780AD46764736C8A3A0 /* ContactCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545FB917098A84A13A395CD25F71D0A3 /* ContactCard.swift */; };
-		DA36B8F90246BC2FC31D0420EE365220 /* ContactCard-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D6D62FAFC3505FE45D5AA87813E2472 /* ContactCard-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DC1A79D329131432FA7803475F98207A /* Pods-ContactCard_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B7DF41748BFE51E19D9996B810FE25 /* Pods-ContactCard_Tests-dummy.m */; };
-		DC6E9E16347BF3120F5DC0AD39F6B49B /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE506ECE97701EBA44FDBFF401C1A04 /* SwiftyJSON.swift */; };
-		EE8FB548EFE488ADC11EB89945F16F9E /* Pods-ContactCard_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B421954C2FE39AC0592FCA3955D2589C /* Pods-ContactCard_Example-dummy.m */; };
-		F73C8BE5299D43FF83926DB577A496EF /* Pods-ContactCard_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 67AF13E0A6474519CB771C0CF8D62450 /* Pods-ContactCard_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0915A1BBFD1844C8C7EAF010EC3F987D /* ContactCard-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D541189DA0E510E88E31CAA70A0C05D5 /* ContactCard-dummy.m */; };
+		28789B1C151C5B7192B4ADC5F13A72E7 /* Pods-ContactCard_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 714D3714A64C4C8B4A820317B6DC3C6A /* Pods-ContactCard_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2C877352C363720D026DEBFF5CF3F7AC /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E4FE13261AAE753F812AAF18AAF1D2 /* Contacts.framework */; };
+		2F4BBCB4588E61D5A5B2073D61FEBFDF /* Pods-ContactCard_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E33E57F222854C2BBFFC8D72F84FBB5 /* Pods-ContactCard_Example-dummy.m */; };
+		3732D0B07D0993B7C31185041DB245D5 /* Pods-ContactCard_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F3E3C83BAB89AF40D357B8D95FF437D9 /* Pods-ContactCard_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3A8B83077BE331623085397F22F3EF36 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E473AEF89063E3384C91DA34E0D9B36B /* SwiftyJSON-dummy.m */; };
+		3C989C21E15DBC02994DA922F246B76B /* Pods-ContactCard_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AE4875574804DCF4FAA37C3DFBC8E487 /* Pods-ContactCard_Tests-dummy.m */; };
+		5BEE1393639B94C5F261A193E5B305CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E221410B715D4A0634C59C19517C2807 /* Foundation.framework */; };
+		777CCBE8998D3EA1EF6DBA56CD8F7EB1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E221410B715D4A0634C59C19517C2807 /* Foundation.framework */; };
+		94EFDA92F07EAAB3A59B5ACB16685CA4 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDBD0D3576836D87BFE122FD7BA5E07 /* SwiftyJSON.swift */; };
+		A11480DC556D3C159747E0B20C73FFDF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E221410B715D4A0634C59C19517C2807 /* Foundation.framework */; };
+		B94080BE719B059768BBF197B4285C69 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E221410B715D4A0634C59C19517C2807 /* Foundation.framework */; };
+		E5D76307A5845DA5F0A3915BF0E61984 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C231DBCD1CE56F8094E247E7369B3CD /* SwiftyJSON.framework */; };
+		ECCE24E641D2AC0CB7C0386BF052C337 /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4C66A9CAE176AAB72C4576E0BE4BD54C /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F7A78115487CB5FF44C164309216656E /* ContactCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E00F7651BDDD8BFC581DCAC820D78B9 /* ContactCard.swift */; };
+		FAFD587EB3B40E4D8AAED2F9E00A73AC /* ContactCard-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3A0840A8A950E4373A5A4EEF7BFFF415 /* ContactCard-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		58B470DF8D2CD52E61FC9D6ED9ECB95C /* PBXContainerItemProxy */ = {
+		3E4B0FC435F88E70D4EEF53CD0980F9B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C4C8ABD7930FFB54DAC8072010F09894;
+			remoteGlobalIDString = D118A6A04828FD3CDA8640CD2B6796D2;
 			remoteInfo = SwiftyJSON;
 		};
-		894098C02AC3D7B5F77CBB16524033C9 /* PBXContainerItemProxy */ = {
+		5352C76AAB28985250085099BF43420E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = C4C8ABD7930FFB54DAC8072010F09894;
+			remoteGlobalIDString = D118A6A04828FD3CDA8640CD2B6796D2;
 			remoteInfo = SwiftyJSON;
 		};
-		A46078037482FBEDA80E60A32A848CA9 /* PBXContainerItemProxy */ = {
+		618EB459350F5976BE5524C154C363FB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 351EA953737C8171CD7CCC3BEEEF8AC0;
+			remoteGlobalIDString = 83AB6B9297358022F1D83BEF3B4FBA2D;
+			remoteInfo = "Pods-ContactCard_Example";
+		};
+		E5F035720A16611AE3416484F706EB7A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7D934068B41CBB366211FA643BB40F39;
 			remoteInfo = ContactCard;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		05CA09B061E193906653AC21FD3A94F1 /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
-		09D1A48647C6940FC40E2838383C53C8 /* Pods-ContactCard_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ContactCard_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		09DA463136750542E05FC5103455108F /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Contacts.framework; sourceTree = DEVELOPER_DIR; };
-		0D6D62FAFC3505FE45D5AA87813E2472 /* ContactCard-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ContactCard-umbrella.h"; sourceTree = "<group>"; };
-		14B7BA655408112E41324D05B0EC0E5D /* ContactCard.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ContactCard.modulemap; sourceTree = "<group>"; };
-		164BD58B7DC4B7F24D8DFE2F5259DB79 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20FEB5DE384A1B0B19D70589DD66AB73 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		2E7F7C62EE34D2D271E6E1234A2002B2 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
-		32B9BBA8F5B33E56C38F5546432F66B7 /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
-		3970D1CCAD7A639C4155B2674B4650F8 /* ContactCard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ContactCard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F7202EB14989D5F87138791EC782F31 /* Pods_ContactCard_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ContactCard_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4647B529758C580EE634B02D0C5164DB /* ContactCard-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ContactCard-dummy.m"; sourceTree = "<group>"; };
-		4B35DB964E58479B33E43585E2642485 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4C6EC17D8D79CF9CDC968F39F3775225 /* Pods-ContactCard_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ContactCard_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		4CB9D114CEF558098992FCB499161EEC /* Pods_ContactCard_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ContactCard_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		519106D2CEA92CDE4B79CBC188D3AF5A /* ContactCard.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ContactCard.xcconfig; sourceTree = "<group>"; };
-		545FB917098A84A13A395CD25F71D0A3 /* ContactCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContactCard.swift; path = ContactCard/Classes/ContactCard.swift; sourceTree = "<group>"; };
-		55550D41F371AFDAD4A2D1626117F200 /* Pods-ContactCard_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ContactCard_Example-resources.sh"; sourceTree = "<group>"; };
-		5E9181113EC58423DE224A61EC931591 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		67AF13E0A6474519CB771C0CF8D62450 /* Pods-ContactCard_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ContactCard_Example-umbrella.h"; sourceTree = "<group>"; };
-		67FFCD49AD003C79D3140174B3342095 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		68D0040CC9408A04D20DF08F879FCF05 /* Pods-ContactCard_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ContactCard_Tests-umbrella.h"; sourceTree = "<group>"; };
-		6A3C2ABEF7AFBF793059D1AA2F2ECC66 /* Pods-ContactCard_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ContactCard_Tests-frameworks.sh"; sourceTree = "<group>"; };
-		6D5E27100AC7FF5322042B8E7B3D05E8 /* Pods-ContactCard_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ContactCard_Example.release.xcconfig"; sourceTree = "<group>"; };
-		70391759F4AE715DF147E5AED94862C5 /* Pods-ContactCard_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-ContactCard_Example.modulemap"; sourceTree = "<group>"; };
-		909AD3057DF4723751EA55FD6CBF891D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		92A108D3E6EC81E328002FB0C0DB23BD /* Pods-ContactCard_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ContactCard_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A31B67F24A3541A4C434A84B746CF41A /* Pods-ContactCard_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ContactCard_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		B0AEA62226873CCD1EF4F8BFA1FB1F6E /* Pods-ContactCard_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ContactCard_Example-frameworks.sh"; sourceTree = "<group>"; };
-		B421954C2FE39AC0592FCA3955D2589C /* Pods-ContactCard_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ContactCard_Example-dummy.m"; sourceTree = "<group>"; };
-		B9309A02C11230ABB37E73B915A54A16 /* Pods-ContactCard_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ContactCard_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		BBF610E40BDF6E542FA21FF7E5491205 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
-		BDE0E92325B101911981AF935EF2AF31 /* Pods-ContactCard_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ContactCard_Tests-resources.sh"; sourceTree = "<group>"; };
-		BDE506ECE97701EBA44FDBFF401C1A04 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
-		C4A9A658C966F6BB111BEDBDEA1F874A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C65CF3142D7A86807F33B6B00FA8D0D4 /* Pods-ContactCard_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-ContactCard_Tests.modulemap"; sourceTree = "<group>"; };
-		D032A29E584B77AE187E586922267CF5 /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
-		D67735D943DD180F94396A2FD94E19EC /* Pods-ContactCard_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ContactCard_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		DB0D049E46286B59F992087D233F6069 /* ContactCard-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ContactCard-prefix.pch"; sourceTree = "<group>"; };
-		E1B7DF41748BFE51E19D9996B810FE25 /* Pods-ContactCard_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ContactCard_Tests-dummy.m"; sourceTree = "<group>"; };
-		E85010D939F24CF5E1FB74C85729333E /* Pods-ContactCard_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ContactCard_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		05EB2E221DD60B8EFCF51F6CEE4D84ED /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
+		08B259E5E121A724A4E573EC6478CB22 /* ContactCard-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ContactCard-Info.plist"; sourceTree = "<group>"; };
+		0CA742C908573E0E8797FC45EF29B67C /* Pods-ContactCard_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ContactCard_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		0CDBD0D3576836D87BFE122FD7BA5E07 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON/SwiftyJSON.swift; sourceTree = "<group>"; };
+		127099C65329AF6F6D215316ED91BCCC /* ContactCard.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = ContactCard.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		1339DE3176262D51ACFF33D64E1ED7AD /* Pods-ContactCard_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ContactCard_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		1F373CD69C8E3E6B1E34DC379D13A1EA /* Pods_ContactCard_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ContactCard_Example.framework; path = "Pods-ContactCard_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		374B35B7CFEDBA3C3E8E04C176915564 /* ContactCard-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ContactCard-prefix.pch"; sourceTree = "<group>"; };
+		3A0840A8A950E4373A5A4EEF7BFFF415 /* ContactCard-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ContactCard-umbrella.h"; sourceTree = "<group>"; };
+		3DFD83DDFCCB3E2E20D28B31033B3068 /* Pods_ContactCard_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ContactCard_Tests.framework; path = "Pods-ContactCard_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E33E57F222854C2BBFFC8D72F84FBB5 /* Pods-ContactCard_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ContactCard_Example-dummy.m"; sourceTree = "<group>"; };
+		46EB4734024C4AF349000C76230F68DA /* Pods-ContactCard_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ContactCard_Example-frameworks.sh"; sourceTree = "<group>"; };
+		4C66A9CAE176AAB72C4576E0BE4BD54C /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
+		571603CA3E54B6CD8547FC7AAB992E07 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
+		58548E82723FAE34D45C5A84BF6E577F /* Pods-ContactCard_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ContactCard_Example-Info.plist"; sourceTree = "<group>"; };
+		6445018BCBA418A7BF4F150639D78A37 /* Pods-ContactCard_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ContactCard_Tests.modulemap"; sourceTree = "<group>"; };
+		6E00F7651BDDD8BFC581DCAC820D78B9 /* ContactCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContactCard.swift; path = ContactCard/Classes/ContactCard.swift; sourceTree = "<group>"; };
+		6E3F577C2BCE327FA442571B47FA4592 /* Pods-ContactCard_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ContactCard_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		714D3714A64C4C8B4A820317B6DC3C6A /* Pods-ContactCard_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ContactCard_Example-umbrella.h"; sourceTree = "<group>"; };
+		7B19043DDF000C2CEBBF5007691E492B /* Pods-ContactCard_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ContactCard_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		7C231DBCD1CE56F8094E247E7369B3CD /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7DA6E6A32DB31A0F9FEDCBE0A2E2AD6C /* Pods-ContactCard_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ContactCard_Example.release.xcconfig"; sourceTree = "<group>"; };
+		8A680D33B170328ABD3D8D5178007803 /* Pods-ContactCard_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ContactCard_Tests-Info.plist"; sourceTree = "<group>"; };
+		96D8DA4A0D3D65F58E3B492DE8BACEB9 /* ContactCard.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ContactCard.modulemap; sourceTree = "<group>"; };
+		991FA782AAF51EEAFEB0C2BB15D4DD9D /* ContactCard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ContactCard.framework; path = ContactCard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		99CC0319FA668D0EB156E42ADC10CFB1 /* ContactCard.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ContactCard.xcconfig; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		AAE87C3050708495EF3D0A9966521468 /* Pods-ContactCard_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ContactCard_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		AE4875574804DCF4FAA37C3DFBC8E487 /* Pods-ContactCard_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ContactCard_Tests-dummy.m"; sourceTree = "<group>"; };
+		C93010B2D544DE02172A963E48E02A5E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		D0E4FE13261AAE753F812AAF18AAF1D2 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Contacts.framework; sourceTree = DEVELOPER_DIR; };
+		D39B80BD31B6D4246A0D1EAE69E2E03C /* Pods-ContactCard_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ContactCard_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		D3BD1138DFAFE60570035C6D0B1C08E5 /* Pods-ContactCard_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ContactCard_Example.modulemap"; sourceTree = "<group>"; };
+		D541189DA0E510E88E31CAA70A0C05D5 /* ContactCard-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ContactCard-dummy.m"; sourceTree = "<group>"; };
+		E06E29E2979CDBEB5F2AD1D03AF329D3 /* SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.xcconfig; sourceTree = "<group>"; };
+		E221410B715D4A0634C59C19517C2807 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyJSON.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E473AEF89063E3384C91DA34E0D9B36B /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
+		E8473499E91B2D5B0E8BEDA4FEFA70CC /* SwiftyJSON-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftyJSON-Info.plist"; sourceTree = "<group>"; };
+		F3E3C83BAB89AF40D357B8D95FF437D9 /* Pods-ContactCard_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ContactCard_Tests-umbrella.h"; sourceTree = "<group>"; };
+		F9B1EB74290B972CA76FA23AAE9F248F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		FB70584C18B806C0B0D5002AC01A4C51 /* Pods-ContactCard_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ContactCard_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0A8E8EBF88CC9E350164CD80DD83DCB3 /* Frameworks */ = {
+		0541A9FB5F06DD29542D66A5788F370F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96E0DECC12A25ED0746ABE23A1F89EDF /* Contacts.framework in Frameworks */,
-				16E83EBABD56A5B4A7FEDC70413BBEB5 /* Foundation.framework in Frameworks */,
-				4960E88D73F2E7BF466961B47A8377CD /* SwiftyJSON.framework in Frameworks */,
+				2C877352C363720D026DEBFF5CF3F7AC /* Contacts.framework in Frameworks */,
+				5BEE1393639B94C5F261A193E5B305CD /* Foundation.framework in Frameworks */,
+				E5D76307A5845DA5F0A3915BF0E61984 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AA0441D6306F08F94C0C9A2002CE1200 /* Frameworks */ = {
+		3684BFB97365E1D5F7FCD2869250AC9D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D9EB916F8B33AE17D979133E50C9EA8 /* Foundation.framework in Frameworks */,
+				B94080BE719B059768BBF197B4285C69 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B821A76B32BA6D64F7DE8D702B182728 /* Frameworks */ = {
+		65CDB1269C56340E85664E88B0C6DA0C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32E3802522C3175E0A3218002FD88335 /* Foundation.framework in Frameworks */,
+				777CCBE8998D3EA1EF6DBA56CD8F7EB1 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E8279B4E277015184CA5456126BE8DEF /* Frameworks */ = {
+		E4D8A8A1694FA53153BF8C6C40CB755D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA20749F6AE675E2B33324D58487A308 /* Foundation.framework in Frameworks */,
+				A11480DC556D3C159747E0B20C73FFDF /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2F7F630307E98A67E1E7F2C928B4CAFC /* Products */ = {
+		2527ABD6933051FA676509D60C0305E4 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				3970D1CCAD7A639C4155B2674B4650F8 /* ContactCard.framework */,
-				4CB9D114CEF558098992FCB499161EEC /* Pods_ContactCard_Example.framework */,
-				3F7202EB14989D5F87138791EC782F31 /* Pods_ContactCard_Tests.framework */,
-				5E9181113EC58423DE224A61EC931591 /* SwiftyJSON.framework */,
+				D0E4FE13261AAE753F812AAF18AAF1D2 /* Contacts.framework */,
+				E221410B715D4A0634C59C19517C2807 /* Foundation.framework */,
 			);
-			name = Products;
+			name = iOS;
 			sourceTree = "<group>";
 		};
-		70A8E4D3C62B6C203D238581DA091C21 /* SwiftyJSON */ = {
+		2C6A71D462ED46C2A7F74D962134DC74 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BDE506ECE97701EBA44FDBFF401C1A04 /* SwiftyJSON.swift */,
-				8EC39E1DC11846207722B71AAFE40F98 /* Support Files */,
+				36AB58DCE8747D206B69D48084D7CBB2 /* SwiftyJSON */,
 			);
-			path = SwiftyJSON;
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		78652BBD22E7671D17779EB2B8A08395 /* Development Pods */ = {
+		2CC88B29336648C9824F8AD7B37517C0 /* Pods-ContactCard_Example */ = {
 			isa = PBXGroup;
 			children = (
-				E5F27EA2424493185E1ABA49E590FF35 /* ContactCard */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		7DB346D0F39D3F0E887471402A8071AB = {
-			isa = PBXGroup;
-			children = (
-				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				78652BBD22E7671D17779EB2B8A08395 /* Development Pods */,
-				C6ED5A3E787448A6945EFE50CC0FBB96 /* Frameworks */,
-				BD1E3C710F12F4B4C092FC8E2AD22110 /* Pods */,
-				2F7F630307E98A67E1E7F2C928B4CAFC /* Products */,
-				8C94CD71423C35FA310C7B916CC96F2A /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		8C94CD71423C35FA310C7B916CC96F2A /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				AF12C03DB9AD1727C75D51674E9229F7 /* Pods-ContactCard_Example */,
-				E92DDBC5C8D515466004C484EA09AFB9 /* Pods-ContactCard_Tests */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		8EC39E1DC11846207722B71AAFE40F98 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				C4A9A658C966F6BB111BEDBDEA1F874A /* Info.plist */,
-				D032A29E584B77AE187E586922267CF5 /* SwiftyJSON.modulemap */,
-				2E7F7C62EE34D2D271E6E1234A2002B2 /* SwiftyJSON.xcconfig */,
-				32B9BBA8F5B33E56C38F5546432F66B7 /* SwiftyJSON-dummy.m */,
-				BBF610E40BDF6E542FA21FF7E5491205 /* SwiftyJSON-prefix.pch */,
-				05CA09B061E193906653AC21FD3A94F1 /* SwiftyJSON-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftyJSON";
-			sourceTree = "<group>";
-		};
-		AF12C03DB9AD1727C75D51674E9229F7 /* Pods-ContactCard_Example */ = {
-			isa = PBXGroup;
-			children = (
-				909AD3057DF4723751EA55FD6CBF891D /* Info.plist */,
-				70391759F4AE715DF147E5AED94862C5 /* Pods-ContactCard_Example.modulemap */,
-				4C6EC17D8D79CF9CDC968F39F3775225 /* Pods-ContactCard_Example-acknowledgements.markdown */,
-				09D1A48647C6940FC40E2838383C53C8 /* Pods-ContactCard_Example-acknowledgements.plist */,
-				B421954C2FE39AC0592FCA3955D2589C /* Pods-ContactCard_Example-dummy.m */,
-				B0AEA62226873CCD1EF4F8BFA1FB1F6E /* Pods-ContactCard_Example-frameworks.sh */,
-				55550D41F371AFDAD4A2D1626117F200 /* Pods-ContactCard_Example-resources.sh */,
-				67AF13E0A6474519CB771C0CF8D62450 /* Pods-ContactCard_Example-umbrella.h */,
-				92A108D3E6EC81E328002FB0C0DB23BD /* Pods-ContactCard_Example.debug.xcconfig */,
-				6D5E27100AC7FF5322042B8E7B3D05E8 /* Pods-ContactCard_Example.release.xcconfig */,
+				D3BD1138DFAFE60570035C6D0B1C08E5 /* Pods-ContactCard_Example.modulemap */,
+				7B19043DDF000C2CEBBF5007691E492B /* Pods-ContactCard_Example-acknowledgements.markdown */,
+				0CA742C908573E0E8797FC45EF29B67C /* Pods-ContactCard_Example-acknowledgements.plist */,
+				3E33E57F222854C2BBFFC8D72F84FBB5 /* Pods-ContactCard_Example-dummy.m */,
+				46EB4734024C4AF349000C76230F68DA /* Pods-ContactCard_Example-frameworks.sh */,
+				58548E82723FAE34D45C5A84BF6E577F /* Pods-ContactCard_Example-Info.plist */,
+				714D3714A64C4C8B4A820317B6DC3C6A /* Pods-ContactCard_Example-umbrella.h */,
+				6E3F577C2BCE327FA442571B47FA4592 /* Pods-ContactCard_Example.debug.xcconfig */,
+				7DA6E6A32DB31A0F9FEDCBE0A2E2AD6C /* Pods-ContactCard_Example.release.xcconfig */,
 			);
 			name = "Pods-ContactCard_Example";
 			path = "Target Support Files/Pods-ContactCard_Example";
 			sourceTree = "<group>";
 		};
-		BD1E3C710F12F4B4C092FC8E2AD22110 /* Pods */ = {
+		2F092D1AD0FE596EDCCB5D32CAECC149 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				70A8E4D3C62B6C203D238581DA091C21 /* SwiftyJSON */,
+				991FA782AAF51EEAFEB0C2BB15D4DD9D /* ContactCard.framework */,
+				1F373CD69C8E3E6B1E34DC379D13A1EA /* Pods_ContactCard_Example.framework */,
+				3DFD83DDFCCB3E2E20D28B31033B3068 /* Pods_ContactCard_Tests.framework */,
+				E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON.framework */,
 			);
-			name = Pods;
+			name = Products;
 			sourceTree = "<group>";
 		};
-		C4A596981F8E6F50E8478ABC77734DBC /* Support Files */ = {
+		36AB58DCE8747D206B69D48084D7CBB2 /* SwiftyJSON */ = {
 			isa = PBXGroup;
 			children = (
-				14B7BA655408112E41324D05B0EC0E5D /* ContactCard.modulemap */,
-				519106D2CEA92CDE4B79CBC188D3AF5A /* ContactCard.xcconfig */,
-				4647B529758C580EE634B02D0C5164DB /* ContactCard-dummy.m */,
-				DB0D049E46286B59F992087D233F6069 /* ContactCard-prefix.pch */,
-				0D6D62FAFC3505FE45D5AA87813E2472 /* ContactCard-umbrella.h */,
-				164BD58B7DC4B7F24D8DFE2F5259DB79 /* Info.plist */,
+				0CDBD0D3576836D87BFE122FD7BA5E07 /* SwiftyJSON.swift */,
+				FF2248F76C1F51163F78F4C1DED1A044 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/ContactCard";
+			name = SwiftyJSON;
+			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
-		C6ED5A3E787448A6945EFE50CC0FBB96 /* Frameworks */ = {
+		3FBB8EB45B0804C75423EE1C85AFAC6B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				67FFCD49AD003C79D3140174B3342095 /* SwiftyJSON.framework */,
-				E8B7D6FED411585174CEB8DF6707D64D /* iOS */,
+				7C231DBCD1CE56F8094E247E7369B3CD /* SwiftyJSON.framework */,
+				2527ABD6933051FA676509D60C0305E4 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E5F27EA2424493185E1ABA49E590FF35 /* ContactCard */ = {
+		57188F40E8F94B483E740134CCAD571E /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				545FB917098A84A13A395CD25F71D0A3 /* ContactCard.swift */,
-				C4A596981F8E6F50E8478ABC77734DBC /* Support Files */,
+				99DFA124CF6951BD217C43E41C3C9E24 /* ContactCard */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		945EA1C49B77B7D8BF7FFB19DC93C524 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2CC88B29336648C9824F8AD7B37517C0 /* Pods-ContactCard_Example */,
+				F9C62048E9B8293B5975AE0F4DDAA468 /* Pods-ContactCard_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		99DFA124CF6951BD217C43E41C3C9E24 /* ContactCard */ = {
+			isa = PBXGroup;
+			children = (
+				6E00F7651BDDD8BFC581DCAC820D78B9 /* ContactCard.swift */,
+				D74B07E74C1A3836C410589ED81BDC2A /* Pod */,
+				DC6E6DDF6C33159C5222F82E28A41B4D /* Support Files */,
 			);
 			name = ContactCard;
 			path = ../..;
 			sourceTree = "<group>";
 		};
-		E8B7D6FED411585174CEB8DF6707D64D /* iOS */ = {
+		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
-				09DA463136750542E05FC5103455108F /* Contacts.framework */,
-				20FEB5DE384A1B0B19D70589DD66AB73 /* Foundation.framework */,
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				57188F40E8F94B483E740134CCAD571E /* Development Pods */,
+				3FBB8EB45B0804C75423EE1C85AFAC6B /* Frameworks */,
+				2C6A71D462ED46C2A7F74D962134DC74 /* Pods */,
+				2F092D1AD0FE596EDCCB5D32CAECC149 /* Products */,
+				945EA1C49B77B7D8BF7FFB19DC93C524 /* Targets Support Files */,
 			);
-			name = iOS;
 			sourceTree = "<group>";
 		};
-		E92DDBC5C8D515466004C484EA09AFB9 /* Pods-ContactCard_Tests */ = {
+		D74B07E74C1A3836C410589ED81BDC2A /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				4B35DB964E58479B33E43585E2642485 /* Info.plist */,
-				C65CF3142D7A86807F33B6B00FA8D0D4 /* Pods-ContactCard_Tests.modulemap */,
-				A31B67F24A3541A4C434A84B746CF41A /* Pods-ContactCard_Tests-acknowledgements.markdown */,
-				B9309A02C11230ABB37E73B915A54A16 /* Pods-ContactCard_Tests-acknowledgements.plist */,
-				E1B7DF41748BFE51E19D9996B810FE25 /* Pods-ContactCard_Tests-dummy.m */,
-				6A3C2ABEF7AFBF793059D1AA2F2ECC66 /* Pods-ContactCard_Tests-frameworks.sh */,
-				BDE0E92325B101911981AF935EF2AF31 /* Pods-ContactCard_Tests-resources.sh */,
-				68D0040CC9408A04D20DF08F879FCF05 /* Pods-ContactCard_Tests-umbrella.h */,
-				D67735D943DD180F94396A2FD94E19EC /* Pods-ContactCard_Tests.debug.xcconfig */,
-				E85010D939F24CF5E1FB74C85729333E /* Pods-ContactCard_Tests.release.xcconfig */,
+				127099C65329AF6F6D215316ED91BCCC /* ContactCard.podspec */,
+				F9B1EB74290B972CA76FA23AAE9F248F /* LICENSE */,
+				C93010B2D544DE02172A963E48E02A5E /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		DC6E6DDF6C33159C5222F82E28A41B4D /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				96D8DA4A0D3D65F58E3B492DE8BACEB9 /* ContactCard.modulemap */,
+				99CC0319FA668D0EB156E42ADC10CFB1 /* ContactCard.xcconfig */,
+				D541189DA0E510E88E31CAA70A0C05D5 /* ContactCard-dummy.m */,
+				08B259E5E121A724A4E573EC6478CB22 /* ContactCard-Info.plist */,
+				374B35B7CFEDBA3C3E8E04C176915564 /* ContactCard-prefix.pch */,
+				3A0840A8A950E4373A5A4EEF7BFFF415 /* ContactCard-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/ContactCard";
+			sourceTree = "<group>";
+		};
+		F9C62048E9B8293B5975AE0F4DDAA468 /* Pods-ContactCard_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				6445018BCBA418A7BF4F150639D78A37 /* Pods-ContactCard_Tests.modulemap */,
+				1339DE3176262D51ACFF33D64E1ED7AD /* Pods-ContactCard_Tests-acknowledgements.markdown */,
+				FB70584C18B806C0B0D5002AC01A4C51 /* Pods-ContactCard_Tests-acknowledgements.plist */,
+				AE4875574804DCF4FAA37C3DFBC8E487 /* Pods-ContactCard_Tests-dummy.m */,
+				8A680D33B170328ABD3D8D5178007803 /* Pods-ContactCard_Tests-Info.plist */,
+				F3E3C83BAB89AF40D357B8D95FF437D9 /* Pods-ContactCard_Tests-umbrella.h */,
+				D39B80BD31B6D4246A0D1EAE69E2E03C /* Pods-ContactCard_Tests.debug.xcconfig */,
+				AAE87C3050708495EF3D0A9966521468 /* Pods-ContactCard_Tests.release.xcconfig */,
 			);
 			name = "Pods-ContactCard_Tests";
 			path = "Target Support Files/Pods-ContactCard_Tests";
 			sourceTree = "<group>";
 		};
+		FF2248F76C1F51163F78F4C1DED1A044 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				05EB2E221DD60B8EFCF51F6CEE4D84ED /* SwiftyJSON.modulemap */,
+				E06E29E2979CDBEB5F2AD1D03AF329D3 /* SwiftyJSON.xcconfig */,
+				E473AEF89063E3384C91DA34E0D9B36B /* SwiftyJSON-dummy.m */,
+				E8473499E91B2D5B0E8BEDA4FEFA70CC /* SwiftyJSON-Info.plist */,
+				571603CA3E54B6CD8547FC7AAB992E07 /* SwiftyJSON-prefix.pch */,
+				4C66A9CAE176AAB72C4576E0BE4BD54C /* SwiftyJSON-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftyJSON";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		440FA14249F84F44A89CD13D0812F8FA /* Headers */ = {
+		09AAE9A8FAB91E4DE20C977ABB684675 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E64C375658B4B45C6A0AC4F4AD67F02 /* Pods-ContactCard_Tests-umbrella.h in Headers */,
+				28789B1C151C5B7192B4ADC5F13A72E7 /* Pods-ContactCard_Example-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		505FAAC0EFAEDBB3EE0E8F1E883B8357 /* Headers */ = {
+		6D96F8DD8186DA936F975413322F5330 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFD37CF3F6597621259A0D77EAA81E05 /* SwiftyJSON-umbrella.h in Headers */,
+				3732D0B07D0993B7C31185041DB245D5 /* Pods-ContactCard_Tests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8AF8AFF54F5C5CECF424AF932D967CB9 /* Headers */ = {
+		A621174BA85917EFB926DFF63EE72DD7 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F73C8BE5299D43FF83926DB577A496EF /* Pods-ContactCard_Example-umbrella.h in Headers */,
+				FAFD587EB3B40E4D8AAED2F9E00A73AC /* ContactCard-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DF88C776B820F8C1B35345FF850CB693 /* Headers */ = {
+		D7BD9A3285CFA56429BBF2960CA3A306 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA36B8F90246BC2FC31D0420EE365220 /* ContactCard-umbrella.h in Headers */,
+				ECCE24E641D2AC0CB7C0386BF052C337 /* SwiftyJSON-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		351EA953737C8171CD7CCC3BEEEF8AC0 /* ContactCard */ = {
+		7D934068B41CBB366211FA643BB40F39 /* ContactCard */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 638F37CB0422609C89A022E255D06EF7 /* Build configuration list for PBXNativeTarget "ContactCard" */;
+			buildConfigurationList = FDA985C781113B79E9F9AF0A6B6BE41A /* Build configuration list for PBXNativeTarget "ContactCard" */;
 			buildPhases = (
-				10AFCB26AB0D97DC77733DF83F010836 /* Sources */,
-				0A8E8EBF88CC9E350164CD80DD83DCB3 /* Frameworks */,
-				DF88C776B820F8C1B35345FF850CB693 /* Headers */,
+				A621174BA85917EFB926DFF63EE72DD7 /* Headers */,
+				137BC06A1F345965FCB00B9FAEFDFAF9 /* Sources */,
+				0541A9FB5F06DD29542D66A5788F370F /* Frameworks */,
+				90C9C970D48B72C0958225172D24FF5F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				400313F24129371ED34E62F77EC16EE2 /* PBXTargetDependency */,
+				77A6D4C866AB665AADF9A570FCEF7036 /* PBXTargetDependency */,
 			);
 			name = ContactCard;
 			productName = ContactCard;
-			productReference = 3970D1CCAD7A639C4155B2674B4650F8 /* ContactCard.framework */;
+			productReference = 991FA782AAF51EEAFEB0C2BB15D4DD9D /* ContactCard.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		C4C8ABD7930FFB54DAC8072010F09894 /* SwiftyJSON */ = {
+		8135BDC86F1782162E0A58457DA0CD60 /* Pods-ContactCard_Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6E368340781E5EFC8C613FB904688C07 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
+			buildConfigurationList = 49F5DBC65E7F02CBDB4201F62B14B092 /* Build configuration list for PBXNativeTarget "Pods-ContactCard_Tests" */;
 			buildPhases = (
-				F21C52CB893B1BFCCF6724E46B0D64D8 /* Sources */,
-				AA0441D6306F08F94C0C9A2002CE1200 /* Frameworks */,
-				505FAAC0EFAEDBB3EE0E8F1E883B8357 /* Headers */,
+				6D96F8DD8186DA936F975413322F5330 /* Headers */,
+				D050FA47BB458A672621795066029654 /* Sources */,
+				E4D8A8A1694FA53153BF8C6C40CB755D /* Frameworks */,
+				4CC00974F6C65C02DA8C5D2BCE44E6C1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1EFBBA76CAF87A4252ED2E91FEA06374 /* PBXTargetDependency */,
+			);
+			name = "Pods-ContactCard_Tests";
+			productName = "Pods-ContactCard_Tests";
+			productReference = 3DFD83DDFCCB3E2E20D28B31033B3068 /* Pods_ContactCard_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		83AB6B9297358022F1D83BEF3B4FBA2D /* Pods-ContactCard_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B7369032A9D455EBDDD214F8ED79454 /* Build configuration list for PBXNativeTarget "Pods-ContactCard_Example" */;
+			buildPhases = (
+				09AAE9A8FAB91E4DE20C977ABB684675 /* Headers */,
+				B7C01EC6A957AB070F55170FA7B648FC /* Sources */,
+				65CDB1269C56340E85664E88B0C6DA0C /* Frameworks */,
+				4DA4E3811AEAC9BADE441DEC3A6FED9E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F21A94FB6F2FEDAE82716225114FB929 /* PBXTargetDependency */,
+				2FD30582B9A85A5CAD9909C01C515746 /* PBXTargetDependency */,
+			);
+			name = "Pods-ContactCard_Example";
+			productName = "Pods-ContactCard_Example";
+			productReference = 1F373CD69C8E3E6B1E34DC379D13A1EA /* Pods_ContactCard_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D118A6A04828FD3CDA8640CD2B6796D2 /* SwiftyJSON */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0CB699E0057ADCC11D00289A79B1719 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */;
+			buildPhases = (
+				D7BD9A3285CFA56429BBF2960CA3A306 /* Headers */,
+				2B68FD17D203EA1BE35159E4361DAE1F /* Sources */,
+				3684BFB97365E1D5F7FCD2869250AC9D /* Frameworks */,
+				A2C669FD1A5F64926C2B21DD61A1192C /* Resources */,
 			);
 			buildRules = (
 			);
@@ -351,174 +408,140 @@
 			);
 			name = SwiftyJSON;
 			productName = SwiftyJSON;
-			productReference = 5E9181113EC58423DE224A61EC931591 /* SwiftyJSON.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		C762C041A2C93A3FE5C4EBD67CA2B135 /* Pods-ContactCard_Example */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BF2FD9C5CE377B2ED94293B76C51373F /* Build configuration list for PBXNativeTarget "Pods-ContactCard_Example" */;
-			buildPhases = (
-				EE156464A6F4C9111EE2EC66D060120D /* Sources */,
-				B821A76B32BA6D64F7DE8D702B182728 /* Frameworks */,
-				8AF8AFF54F5C5CECF424AF932D967CB9 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				ED64351561F6D2770807D5BD7A6FCCB3 /* PBXTargetDependency */,
-				1F4ECB4E754E5D463F840831CDF1339B /* PBXTargetDependency */,
-			);
-			name = "Pods-ContactCard_Example";
-			productName = "Pods-ContactCard_Example";
-			productReference = 4CB9D114CEF558098992FCB499161EEC /* Pods_ContactCard_Example.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		CCAAAAA6DD5B468CD8ADBFB742C87EC0 /* Pods-ContactCard_Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 27B7B09B27856256628BE673BD9A34E9 /* Build configuration list for PBXNativeTarget "Pods-ContactCard_Tests" */;
-			buildPhases = (
-				59A10E721E9DA6D46501A6CB1DDE73D1 /* Sources */,
-				E8279B4E277015184CA5456126BE8DEF /* Frameworks */,
-				440FA14249F84F44A89CD13D0812F8FA /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Pods-ContactCard_Tests";
-			productName = "Pods-ContactCard_Tests";
-			productReference = 3F7202EB14989D5F87138791EC782F31 /* Pods_ContactCard_Tests.framework */;
+			productReference = E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 1010;
-				TargetAttributes = {
-					351EA953737C8171CD7CCC3BEEEF8AC0 = {
-						LastSwiftMigration = 1010;
-					};
-				};
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
 			};
-			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
-			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 2F7F630307E98A67E1E7F2C928B4CAFC /* Products */;
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 2F092D1AD0FE596EDCCB5D32CAECC149 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				351EA953737C8171CD7CCC3BEEEF8AC0 /* ContactCard */,
-				C762C041A2C93A3FE5C4EBD67CA2B135 /* Pods-ContactCard_Example */,
-				CCAAAAA6DD5B468CD8ADBFB742C87EC0 /* Pods-ContactCard_Tests */,
-				C4C8ABD7930FFB54DAC8072010F09894 /* SwiftyJSON */,
+				7D934068B41CBB366211FA643BB40F39 /* ContactCard */,
+				83AB6B9297358022F1D83BEF3B4FBA2D /* Pods-ContactCard_Example */,
+				8135BDC86F1782162E0A58457DA0CD60 /* Pods-ContactCard_Tests */,
+				D118A6A04828FD3CDA8640CD2B6796D2 /* SwiftyJSON */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		4CC00974F6C65C02DA8C5D2BCE44E6C1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4DA4E3811AEAC9BADE441DEC3A6FED9E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90C9C970D48B72C0958225172D24FF5F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2C669FD1A5F64926C2B21DD61A1192C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		10AFCB26AB0D97DC77733DF83F010836 /* Sources */ = {
+		137BC06A1F345965FCB00B9FAEFDFAF9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70C62D227F5C660FC514474BED697743 /* ContactCard-dummy.m in Sources */,
-				C7CE01FF4097E780AD46764736C8A3A0 /* ContactCard.swift in Sources */,
+				0915A1BBFD1844C8C7EAF010EC3F987D /* ContactCard-dummy.m in Sources */,
+				F7A78115487CB5FF44C164309216656E /* ContactCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		59A10E721E9DA6D46501A6CB1DDE73D1 /* Sources */ = {
+		2B68FD17D203EA1BE35159E4361DAE1F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC1A79D329131432FA7803475F98207A /* Pods-ContactCard_Tests-dummy.m in Sources */,
+				3A8B83077BE331623085397F22F3EF36 /* SwiftyJSON-dummy.m in Sources */,
+				94EFDA92F07EAAB3A59B5ACB16685CA4 /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EE156464A6F4C9111EE2EC66D060120D /* Sources */ = {
+		B7C01EC6A957AB070F55170FA7B648FC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE8FB548EFE488ADC11EB89945F16F9E /* Pods-ContactCard_Example-dummy.m in Sources */,
+				2F4BBCB4588E61D5A5B2073D61FEBFDF /* Pods-ContactCard_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F21C52CB893B1BFCCF6724E46B0D64D8 /* Sources */ = {
+		D050FA47BB458A672621795066029654 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				637635FE7093DEC40969D2F3C63907DE /* SwiftyJSON-dummy.m in Sources */,
-				DC6E9E16347BF3120F5DC0AD39F6B49B /* SwiftyJSON.swift in Sources */,
+				3C989C21E15DBC02994DA922F246B76B /* Pods-ContactCard_Tests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1F4ECB4E754E5D463F840831CDF1339B /* PBXTargetDependency */ = {
+		1EFBBA76CAF87A4252ED2E91FEA06374 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-ContactCard_Example";
+			target = 83AB6B9297358022F1D83BEF3B4FBA2D /* Pods-ContactCard_Example */;
+			targetProxy = 618EB459350F5976BE5524C154C363FB /* PBXContainerItemProxy */;
+		};
+		2FD30582B9A85A5CAD9909C01C515746 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftyJSON;
-			target = C4C8ABD7930FFB54DAC8072010F09894 /* SwiftyJSON */;
-			targetProxy = 894098C02AC3D7B5F77CBB16524033C9 /* PBXContainerItemProxy */;
+			target = D118A6A04828FD3CDA8640CD2B6796D2 /* SwiftyJSON */;
+			targetProxy = 3E4B0FC435F88E70D4EEF53CD0980F9B /* PBXContainerItemProxy */;
 		};
-		400313F24129371ED34E62F77EC16EE2 /* PBXTargetDependency */ = {
+		77A6D4C866AB665AADF9A570FCEF7036 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftyJSON;
-			target = C4C8ABD7930FFB54DAC8072010F09894 /* SwiftyJSON */;
-			targetProxy = 58B470DF8D2CD52E61FC9D6ED9ECB95C /* PBXContainerItemProxy */;
+			target = D118A6A04828FD3CDA8640CD2B6796D2 /* SwiftyJSON */;
+			targetProxy = 5352C76AAB28985250085099BF43420E /* PBXContainerItemProxy */;
 		};
-		ED64351561F6D2770807D5BD7A6FCCB3 /* PBXTargetDependency */ = {
+		F21A94FB6F2FEDAE82716225114FB929 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ContactCard;
-			target = 351EA953737C8171CD7CCC3BEEEF8AC0 /* ContactCard */;
-			targetProxy = A46078037482FBEDA80E60A32A848CA9 /* PBXContainerItemProxy */;
+			target = 7D934068B41CBB366211FA643BB40F39 /* ContactCard */;
+			targetProxy = E5F035720A16611AE3416484F706EB7A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		024AE7B2D103E8DFA47AEBA7D78B37D9 /* Debug */ = {
+		000F75A6D329D31C38030DE3D03DC1C1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D67735D943DD180F94396A2FD94E19EC /* Pods-ContactCard_Tests.debug.xcconfig */;
+			baseConfigurationReference = E06E29E2979CDBEB5F2AD1D03AF329D3 /* SwiftyJSON.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ContactCard_Tests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ContactCard_Tests/Pods-ContactCard_Tests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_ContactCard_Tests;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		1B32217B4EF2BABF66DD7D5D7D7DD3BE /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E7F7C62EE34D2D271E6E1234A2002B2 /* SwiftyJSON.xcconfig */;
-			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -529,17 +552,17 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
+				PRODUCT_MODULE_NAME = SwiftyJSON;
 				PRODUCT_NAME = SwiftyJSON;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -547,10 +570,11 @@
 			};
 			name = Release;
 		};
-		4942447820C155F09CF1C19D9E7E5D88 /* Release */ = {
+		1DE2D09AF7DCEBBA30E26D67D4DE5058 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 519106D2CEA92CDE4B79CBC188D3AF5A /* ContactCard.xcconfig */;
+			baseConfigurationReference = E06E29E2979CDBEB5F2AD1D03AF329D3 /* SwiftyJSON.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -560,61 +584,25 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/ContactCard/ContactCard-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ContactCard/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ContactCard/ContactCard.modulemap";
-				PRODUCT_NAME = ContactCard;
+				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
+				PRODUCT_MODULE_NAME = SwiftyJSON;
+				PRODUCT_NAME = SwiftyJSON;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
-		6EADC1CE93FD681499EAD4A620F351D6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6D5E27100AC7FF5322042B8E7B3D05E8 /* Pods-ContactCard_Example.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ContactCard_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ContactCard_Example/Pods-ContactCard_Example.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_ContactCard_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		6F9224530522DD3C735EC96CF142642E /* Release */ = {
+		257497152829C177993B5EC99C1D227A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -624,6 +612,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -645,7 +634,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -662,85 +650,24 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
 		};
-		730648EF9307DD6816453AC96840334D /* Debug */ = {
+		61176C82B60067CB5F2501DD23A91B41 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 92A108D3E6EC81E328002FB0C0DB23BD /* Pods-ContactCard_Example.debug.xcconfig */;
+			baseConfigurationReference = 99CC0319FA668D0EB156E42ADC10CFB1 /* ContactCard.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ContactCard_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-ContactCard_Example/Pods-ContactCard_Example.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_ContactCard_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		74CD4A6461FC6BF5E554A211AC9D5BF4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E7F7C62EE34D2D271E6E1234A2002B2 /* SwiftyJSON.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/SwiftyJSON/SwiftyJSON-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SwiftyJSON/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SwiftyJSON/SwiftyJSON.modulemap";
-				PRODUCT_NAME = SwiftyJSON;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		7ED306B9DD7BE7E4774E56F1695F3DA6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 519106D2CEA92CDE4B79CBC188D3AF5A /* ContactCard.xcconfig */;
-			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -751,28 +678,31 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GCC_PREFIX_HEADER = "Target Support Files/ContactCard/ContactCard-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ContactCard/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/ContactCard/ContactCard-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/ContactCard/ContactCard.modulemap";
+				PRODUCT_MODULE_NAME = ContactCard;
 				PRODUCT_NAME = ContactCard;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
-		89B748E849C5E1651E79A8926978E43C /* Release */ = {
+		6E94D87DEBA695EC035C67A5EF000BCD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E85010D939F24CF5E1FB74C85729333E /* Pods-ContactCard_Tests.release.xcconfig */;
+			baseConfigurationReference = AAE87C3050708495EF3D0A9966521468 /* Pods-ContactCard_Tests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -782,9 +712,9 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-ContactCard_Tests/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-ContactCard_Tests/Pods-ContactCard_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-ContactCard_Tests/Pods-ContactCard_Tests.modulemap";
@@ -792,7 +722,7 @@
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_ContactCard_Tests;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -802,7 +732,111 @@
 			};
 			name = Release;
 		};
-		B57951D085A1B98A97F8A1062A5E5C5B /* Debug */ = {
+		83A18592C59D213D8E76B525272BBF2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7DA6E6A32DB31A0F9FEDCBE0A2E2AD6C /* Pods-ContactCard_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ContactCard_Example/Pods-ContactCard_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ContactCard_Example/Pods-ContactCard_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8811D1E476B10319BBD9C4A2483D371A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99CC0319FA668D0EB156E42ADC10CFB1 /* ContactCard.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ContactCard/ContactCard-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ContactCard/ContactCard-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ContactCard/ContactCard.modulemap";
+				PRODUCT_MODULE_NAME = ContactCard;
+				PRODUCT_NAME = ContactCard;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B9527708DA4B5CE564F9C253E6745C7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D39B80BD31B6D4246A0D1EAE69E2E03C /* Pods-ContactCard_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ContactCard_Tests/Pods-ContactCard_Tests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ContactCard_Tests/Pods-ContactCard_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		DD8F832993327D1DD8046C3CBCBD97CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -812,6 +846,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -833,7 +868,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -853,66 +887,103 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		FAC0AB6B9FDA079FA250540828044A76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E3F577C2BCE327FA442571B47FA4592 /* Pods-ContactCard_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-ContactCard_Example/Pods-ContactCard_Example-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-ContactCard_Example/Pods-ContactCard_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		27B7B09B27856256628BE673BD9A34E9 /* Build configuration list for PBXNativeTarget "Pods-ContactCard_Tests" */ = {
+		3B7369032A9D455EBDDD214F8ED79454 /* Build configuration list for PBXNativeTarget "Pods-ContactCard_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				024AE7B2D103E8DFA47AEBA7D78B37D9 /* Debug */,
-				89B748E849C5E1651E79A8926978E43C /* Release */,
+				FAC0AB6B9FDA079FA250540828044A76 /* Debug */,
+				83A18592C59D213D8E76B525272BBF2B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B57951D085A1B98A97F8A1062A5E5C5B /* Debug */,
-				6F9224530522DD3C735EC96CF142642E /* Release */,
+				DD8F832993327D1DD8046C3CBCBD97CD /* Debug */,
+				257497152829C177993B5EC99C1D227A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		638F37CB0422609C89A022E255D06EF7 /* Build configuration list for PBXNativeTarget "ContactCard" */ = {
+		49F5DBC65E7F02CBDB4201F62B14B092 /* Build configuration list for PBXNativeTarget "Pods-ContactCard_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7ED306B9DD7BE7E4774E56F1695F3DA6 /* Debug */,
-				4942447820C155F09CF1C19D9E7E5D88 /* Release */,
+				B9527708DA4B5CE564F9C253E6745C7C /* Debug */,
+				6E94D87DEBA695EC035C67A5EF000BCD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6E368340781E5EFC8C613FB904688C07 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */ = {
+		C0CB699E0057ADCC11D00289A79B1719 /* Build configuration list for PBXNativeTarget "SwiftyJSON" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				74CD4A6461FC6BF5E554A211AC9D5BF4 /* Debug */,
-				1B32217B4EF2BABF66DD7D5D7D7DD3BE /* Release */,
+				1DE2D09AF7DCEBBA30E26D67D4DE5058 /* Debug */,
+				000F75A6D329D31C38030DE3D03DC1C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BF2FD9C5CE377B2ED94293B76C51373F /* Build configuration list for PBXNativeTarget "Pods-ContactCard_Example" */ = {
+		FDA985C781113B79E9F9AF0A6B6BE41A /* Build configuration list for PBXNativeTarget "ContactCard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				730648EF9307DD6816453AC96840334D /* Debug */,
-				6EADC1CE93FD681499EAD4A620F351D6 /* Release */,
+				8811D1E476B10319BBD9C4A2483D371A /* Debug */,
+				61176C82B60067CB5F2501DD23A91B41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 }

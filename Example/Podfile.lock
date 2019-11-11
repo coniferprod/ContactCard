@@ -1,19 +1,23 @@
 PODS:
-  - ContactCard (0.3.5):
+  - ContactCard (0.3.7):
     - SwiftyJSON
-  - SwiftyJSON (3.1.4)
+  - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
   - ContactCard (from `../`)
 
+SPEC REPOS:
+  trunk:
+    - SwiftyJSON
+
 EXTERNAL SOURCES:
   ContactCard:
-    :path: ../
+    :path: "../"
 
 SPEC CHECKSUMS:
-  ContactCard: 6712cd39040e3817b9eb799f536d6dc65cb9dad1
-  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  ContactCard: a17453b3fef0451b5bf3073349017e3962111b76
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: ed487709fc18b429cbe299074dd7918555f3d502
+PODFILE CHECKSUM: c191d8a15e80387ae8f03c0b3741ae49d38ba3d2
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.8.4

@@ -1549,7 +1549,7 @@ public func cardFrom(JSONString: String) throws -> ContactCard {
         return card
     }
     
-    let j = JSON(data: dataFromString)
+    let j = try! JSON(data: dataFromString)
     let signature = j[0].string
     
     guard signature == cardIdentifier

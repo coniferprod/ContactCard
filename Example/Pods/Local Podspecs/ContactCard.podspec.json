@@ -1,6 +1,6 @@
 {
   "name": "ContactCard",
-  "version": "0.3.5",
+  "version": "0.3.7",
   "summary": "Contacts framework helper for jCard processing.",
   "description": "Helper library for applications depending on the iOS Contacts framework.\nConverts from CNContact to jCard, or from jCard to CNMutableContact.",
   "homepage": "https://github.com/coniferprod/ContactCard",
@@ -13,11 +13,11 @@
   },
   "source": {
     "git": "https://github.com/coniferprod/ContactCard.git",
-    "tag": "0.3.5"
+    "tag": "0.3.7"
   },
   "social_media_url": "https://twitter.com/coniferprod",
   "platforms": {
-    "ios": "9.0"
+    "ios": "11.0"
   },
   "ios": {
     "frameworks": [
